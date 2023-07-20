@@ -50,7 +50,6 @@ library(knitr)
 #read in sample data
 MetaData16<-read.csv("genoswap_metadata.csv") #same for ITS2
 MetaData16$species<-as.factor(as.character(MetaData16$species))
-MetaData16$sample_ID<-as.factor(as.character(MetaData16$sample_ID))
 MetaData16$frag.id<-as.factor(as.character(MetaData16$frag.id))
 MetaData16$type<-as.factor(as.character(MetaData16$type))
 MetaData16$duplicates<-as.factor(as.character(MetaData16$duplicates))
@@ -104,9 +103,10 @@ Bac.seq
 Bac.seq.df <- sample_data(Bac.seq)
 
 #load your .tre otu_repr_100.tre
-treefile<- read.tree("MCL19Summer_16S-pipeline_outputs USE THIS ONE/Results/postprocessing/unifrac/otu_repr_100.tre")
-phy_tree(Bac.seq) <- treefile
-Bac.seq
+#treefile<- read.tree("MCL19Summer_16S-pipeline_outputs USE THIS ONE/Results/postprocessing/unifrac/otu_repr_100.tre")
+#phy_tree(Bac.seq) <- treefile
+#Bac.seq
 
 save(Bac.seq, file = "data/Bac.seq_phyloseq.RData")
 ```
+7/20/23 there is unexpectedly no .tre file in the 16S outputs. I am re-running the CMAIKI cluster with same parameters to see if there was an issue. 
