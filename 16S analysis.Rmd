@@ -13,7 +13,7 @@ HEY Add PCR Plate to QC
 
 #Start analysis here: load in RData if needed
 ```{r}
-#load("Data/Bac.seq_phyloseq.RData") #use RAW data that has been pruned. 
+load("Data/Bac.seq_phyloseq.RData") #use RAW data that has been pruned. 
 ```
 
 QC data
@@ -31,7 +31,7 @@ rank_names(Bac.seq)
 sample_variables(Bac.seq) # metadata cats
 sums<-sample_sums(Bac.seq)
 sums<-as.data.frame(sums)
-write.csv(sums, "sums.csv")
+#write.csv(sums, "sums.csv")
 
 # create df of sample data to view 
 sample.data <- as(sample_data(Bac.seq), "data.frame") #create sample data frame to view

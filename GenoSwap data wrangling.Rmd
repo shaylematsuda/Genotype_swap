@@ -47,12 +47,45 @@ library(knitr)
 
 #Load in data and get into phyloseq (save RData file)
 ```{r}       
-#read in sample data
+#read in sample data and merge metadata
 MetaData16<-read.csv("genoswap_metadata.csv") #same for ITS2
 MetaData16$species<-as.factor(as.character(MetaData16$species))
-MetaData16$frag.id<-as.factor(as.character(MetaData16$frag.id))
+MetaData16$tube.id<-as.factor(as.character(MetaData16$tube.id))
 MetaData16$type<-as.factor(as.character(MetaData16$type))
 MetaData16$duplicates<-as.factor(as.character(MetaData16$duplicates))
+MetaData16<-MetaData16[c(1:5)] #keep cols you need
+
+#read in metadata for samp collections
+genSamp<-read.csv("data/geneticSamples.csv") #load in Kelsey/Rish nursery data
+# notes: swap.genotype is the name to use. the "ziploc genet" name is either bag UM collected in or the changed name a specific nursery calls the genotype. Swap.geno is the name to use here. Rich confirmed all cols to the right of 'notes' unneeded
+genSamp2<-genSamp[c(2:8)] #keep cols you need
+colnames(genSamp2)[5] ="tube.id" #change col name to sample tube ID
+colnames(genSamp2)[1] ="Away.nursery"
+colnames(genSamp2)[3] ="Away.nursery.ID"
+colnames(genSamp2)[4] ="genet.ID"
+
+
+#read in home location for each genet (removed lat/long due to symblols)
+Genotype.Home<-read.csv("data/genoHome.csv") #load in Kelsey/Rish nursery data
+Genotype.Home<-Genotype.Home[c(1:2, 4:8)] #keep cols you need
+colnames(Genotype.Home)[1] ="genet.ID" #change col name to sample tube ID
+colnames(Genotype.Home)[2] ="Home.nursery"
+colnames(Genotype.Home)[3] ="Other.name"
+
+#Combine all metadata
+metadata1<-merge(genSamp2,Genotype.Home, by="genet.ID", all.x=TRUE) #merge
+meta<-merge(MetaData16,metadata1, by="tube.id", all.x=T) #merge all
+
+meta$frag.id<-paste(meta$genet.ID, meta$Home.nursery, meta$Away.nursery.x)
+  meta$tube.id<-as.factor(as.character(meta$tube.id))
+  meta$type<-as.factor(as.character(meta$type))
+  meta$duplicates<-as.factor(as.character(meta$duplicates))
+  meta$species<-as.factor(as.character(meta$species))
+  meta$genet.ID<-as.factor(as.character(meta$genet.ID))
+  meta$Away.nursery<-as.factor(as.character(meta$Away.nursery))
+  meta$Home.nursery<-as.factor(as.character(meta$Home.nursery))
+
+# create new column called frag.id that is a concat of genetID-Home-Away
 
 
 
