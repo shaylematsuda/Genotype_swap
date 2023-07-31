@@ -4,7 +4,7 @@ output: html_notebook
 editor_options: 
   chunk_output_type: console
 ---
-
+## Note, remove samples tube 129 and 134, were resampled in other tubes
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -60,30 +60,59 @@ MetaData16<-MetaData16[!(MetaData16$species=="Apal"),] #remove the APAL
 #read in metadata for samp collections
 genSamp<-read.csv("data/geneticSamples.csv") #load in Kelsey/Rish nursery data
 # notes: swap.genotype is the name to use. the "ziploc genet" name is either bag UM collected in or the changed name a specific nursery calls the genotype. Swap.geno is the name to use here. Rich confirmed all cols to the right of 'notes' unneeded
-genSamp2<-genSamp[c(2:8)] #keep cols you need
-colnames(genSamp2)[5] ="tube.id" #change col name to sample tube ID
-colnames(genSamp2)[1] ="Away.nursery"
-colnames(genSamp2)[3] ="Away.nursery.ID"
-colnames(genSamp2)[4] ="genet.ID"
-genSamp2<-genSamp2[c(1,4:5)] #keep cols you need
+genSamp2<-genSamp[c(1,4,5)] #keep cols you need
+colnames(genSamp2)[3] ="tube.id" #change col name to sample tube ID
 #write.csv(genSamp2,"genSamp2.csv") The metadata has an issue where the genet name is entered slighty different by nursery so, here, we are going with the genoHome genet names. Download the csv and spot check and edit the genet names in THIS file. Also remove tube.ID with NAs
 genSamp3<-read.csv("genSamp3.csv") #upload cleaned and QC-ed geno names
+genSamp3$genet.ID<-gsub("-","",as.character(genSamp3$genet.ID)) #remove all "-", " ", "'"
+genSamp3$genet.ID<-gsub(" ","",as.character(genSamp3$genet.ID)) #remove all "-", " ", "'"
+genSamp3$genet.ID<-gsub("'","",as.character(genSamp3$genet.ID)) #remove all "-", " ", "'"
 
+
+
+#upload meta for Fresh samples to merge add to genSamp3
+genSamp.Fresh<-read.csv("Fresh.meta.away.csv") #load in Kelsey/Rish nursery data
+  genSamp.Fresh$genet.ID<-gsub("-","",as.character(genSamp.Fresh$genet.ID)) #remove all "-", " ", "'"
+  genSamp.Fresh$genet.ID<-gsub(" ","",as.character(genSamp.Fresh$genet.ID)) #remove all "-", " ", "'"
+  genSamp.Fresh$genet.ID<-gsub("'","",as.character(genSamp.Fresh$genet.ID)) #remove all "-", " ", "'"
 
 #read in home location for each genet (removed lat/long due to symblols)
 Genotype.Home<-read.csv("Genotype.Home.csv") #load in Kelsey/Rish nursery data
-Genotype.Home<-Genotype.Home[c(1:2, 4:8)] #keep cols you need
+Genotype.Home<-Genotype.Home[c(1:2)] #keep cols you need
 colnames(Genotype.Home)[1] ="genet.ID" #change col name to sample tube ID
 colnames(Genotype.Home)[2] ="Home.nursery"
-colnames(Genotype.Home)[3] ="Other.name"
   #### There are some with no tube ID, means no samples. remove rows with no tube id. HAVE NOT DONE
 #write.csv(Genotype.Home,"Genotype.Home.csv")
+  Genotype.Home$genet.ID<-gsub("-","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
+  Genotype.Home$genet.ID<-gsub(" ","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
+  Genotype.Home$genet.ID<-gsub("'","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
+Genotype.Home<-na.omit(Genotype.Home)
 
+
+genSamp4<-merge(genSamp3,Genotype.Home, by="genet.ID", all.x=T)
+
+genSamp5<-rbind(genSamp4, genSamp.Fresh)
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML1"] <- "Mote" ### figure out how to code this better
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML13"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML29"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML3"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML31"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML34"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML41"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML5"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML50"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML55"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML57"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML6"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML62"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML7"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML84"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML89"] <- "Mote"
+genSamp5$Home.nursery[genSamp5$genet.ID == "ML90"] <- "Mote"
 
 #Combine all metadata
-metadata1<-merge(genSamp3,Genotype.Home, by="genet.ID", all.x=TRUE) #merge
-meta<-merge(MetaData16,metadata1, by="tube.id", all.x=T) #merge all
-write.csv(meta, "meta.csv")
+meta<-merge(MetaData16,genSamp5, by="tube.id", all.x=T) #merge all
+#write.csv(meta, "meta.csv")
 
 meta$frag.id<-paste(meta$genet.ID, meta$Home.nursery, meta$Away.nursery.x)
   meta$tube.id<-as.factor(as.character(meta$tube.id))
