@@ -81,6 +81,8 @@ Genotype.Home<-read.csv("Genotype.Home.csv") #load in Kelsey/Rish nursery data
 Genotype.Home<-Genotype.Home[c(1:2)] #keep cols you need
 colnames(Genotype.Home)[1] ="genet.ID" #change col name to sample tube ID
 colnames(Genotype.Home)[2] ="Home.nursery"
+
+
   #### There are some with no tube ID, means no samples. remove rows with no tube id. HAVE NOT DONE
 #write.csv(Genotype.Home,"Genotype.Home.csv")
   Genotype.Home$genet.ID<-gsub("-","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
