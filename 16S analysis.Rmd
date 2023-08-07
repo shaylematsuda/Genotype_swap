@@ -4,12 +4,38 @@ author: "matsuda"
 date: "2023-07-20"
 output: html_document
 ---
-
+The data analysis portion for the genotype swap experiment
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
 
-HEY Add PCR Plate to QC
+library(plyr) 
+library(dplyr)
+library(ggplot2)
+library(ggpubr)
+library(lmerTest)
+library(car)
+library(emmeans)
+library(gridExtra)
+library(multcomp)
+library(reshape)
+library(factoextra)
+library(reshape2)
+library(vegan) 
+library(pairwiseAdonis)
+library("scales")
+packageVersion("scales")
+library(RColorBrewer)
+library(colorRamps)
+library(devtools)
+library(phyloseq)
+library(readr)
+library(vegan)
+library(ape)
+library(geosphere)
+library(ade4)
+library(microbiome)  
+library(knitr)
+```
 
 #Start analysis here: load in RData if needed
 ```{r}
@@ -18,11 +44,8 @@ load("Data/Bac.seq_phyloseq.RData") #use RAW data that has been pruned.
 
 QC data
 ```{r}
-# Load data (see data_exploration.Rmd)
-#load("Data/Bac.seq_phyloseq.RData") #use RAW data that has been pruned. 
 # the df is Bac.seq
 
-rank_names(Bac.seq) #ranks are DIV and clade
 ## check out data
 ntaxa(Bac.seq)  #num taxa
 nsamples(Bac.seq)   #num samples
@@ -37,7 +60,7 @@ sums<-as.data.frame(sums)
 sample.data <- as(sample_data(Bac.seq), "data.frame") #create sample data frame to view
 sample.data$LibrarySize <- sample_sums(Bac.seq)
 sample.data <- sample.data[order(sample.data$LibrarySize),]
-sample.data$Index <- seq(nrow(sample.data))  # check 3k for all 
+sample.data$Index <- seq(nrow(sample.data))  
 ggplot(data = sample.data, aes(x=Index, y=LibrarySize, color = frag.id)) +
   geom_point()
 
@@ -46,48 +69,40 @@ ggplot(data = sample.data, aes(x=Index, y=LibrarySize, color = frag.id)) +
   facet_wrap(~type)
 
 ##START HERE
-#Check duplicates: Only 2 from F15 and F2 need to be chosen (the rest filtered out already). F15 and F2 are fine
-dups<-subset_samples(Bac.seq, dups=="yes")
-TopNOTUsB = names(sort(taxa_sums(dups), TRUE)[1:200])
+#Check duplicates and see which to keep. 
+dups<-subset_samples(Bac.seq, duplicates=="dup")
+TopNOTUsB = names(sort(taxa_sums(dups), TRUE)[1:200]) #pull top ASVs
 bac50 = prune_taxa(TopNOTUsB, dups)
-bacBarPlot<-plot_bar(bac50,  fill="Phylum");bacBarPlot
+bacBarPlot<-plot_bar(bac50,  fill="Phylum") +
+  facet_wrap("genet.ID");bacBarPlot #genets_H_A where decisions need to be made: 20 (3, tube 67, 67b, 67c), ML4 (2, Acer272, 272b): Keep Acer 272b and Acer 67c highest read counts
 
-#remove dups F15b and F2b
-Bac.seq <- subset_samples(Bac.seq, sample.name != "F15b")
-Bac.seq <- subset_samples(Bac.seq, sample.name != "F2b" )
+#remove dups Acer67. Acer67b, Acer272
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67b")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer272")
 
-bad.samples <-  c("F15b", "F2b") 
+bad.samples <-  c("Acer67", "Acer67b","Acer272")  #remove from phylo obj
 all.samples<- sample_names(Bac.seq) 
 all.samples <- all.samples[!(all.samples %in% bad.samples)]
  
 Bac.seq<- prune_samples(all.samples, Bac.seq)
 
 richness(Bac.seq)
-plot_richness(Bac.seq, measures = c("Observed","Shannon"), color="sample.type") 
+plot_richness(Bac.seq, measures = c("Observed","Shannon"), color="type") 
 evenness(Bac.seq)
 
-#water samples
-  water<-subset_samples(Bac.seq, type=="acer")
-  TopNOTUswater = names(sort(taxa_sums(water), TRUE)[1:200])
-  bac50 = prune_taxa(TopNOTUswater, water)
-  bacBarPlot<-plot_bar(bac50,  fill="Phylum");bacBarPlot
-
-richness(water)
-plot_richness(water, measures = c("Observed","Shannon"))
-evenness(water)
-
 #NTC
-NTCs<-subset_samples(Bac.seq, sample.type=="NTC")
+NTCs<-subset_samples(Bac.seq, type=="NTC")
 TopNOTUsNTC = names(sort(taxa_sums(NTCs), TRUE)[1:200])
 bac50 = prune_taxa(TopNOTUsNTC, NTCs)
-bacBarPlot<-plot_bar(bac50,  fill="Phylum");bacBarPlot
+bacBarPlot<-plot_bar(bac50,  fill="Phylum");bacBarPlot #all low
 
 richness(NTCs)
 plot_richness(NTCs, measures = c("Observed","Shannon"))
 evenness(NTCs)
 
 #Mock
-Mock<-subset_samples(Bac.seq, sample.type=="Mock")
+Mock<-subset_samples(Bac.seq, type=="Mock")
 TopNOTUsMock = names(sort(taxa_sums(NTCs), TRUE)[1:200])
 bac50 = prune_taxa(TopNOTUsMock, Mock)
 bacBarPlot<-plot_bar(bac50,  fill="Phylum");bacBarPlot
@@ -98,6 +113,8 @@ evenness(Mock)
 
 ```
 
+
+#### After exploring all the data, including samples with low reads, decide what cutoff you want and want for subsampling and then RERUN the data through the CMAIKI pipeline so DESeq can do the subsampling rather than in phyloseq. Here let's do a cutoff of 2.5k. 8/5/23 running
 
 #Set up, Bac.s relative abundaces: Bac.seq.rel (Bac.seq for alpha)
 ```{r}        
@@ -121,18 +138,16 @@ s.u.samp.df <- as(sample_data(Bac.seq.rel), "data.frame") #sample df
 
 #adonis test between sample types: p=0.001 between sample types
 set.seed(30)
-adonis2(Bac.seq.wu.all ~ sample.type, data = s.u.samp.df)
+adonis2(Bac.seq.wu.all ~ type, data = s.u.samp.df) #samples are sig diff than mock, ntc
 
-# Homogeneity of dispersion test  
+# Homogeneity of dispersion test  - no diffs
     set.seed(30)
-    permutest(betadisper(Bac.seq.wu.all, s.u.samp.df$sample.type, type = "centroid"))  # p =0.001
-  ball<-  betadisper(Bac.seq.wu.all, s.u.samp.df$sample.type, type = "centroid")
+    permutest(betadisper(Bac.seq.wu.all, s.u.samp.df$type, type = "centroid"))
+  ball<-  betadisper(Bac.seq.wu.all, s.u.samp.df$type, type = "centroid")
   TukeyHSD(ball,  ordered = FALSE,conf.level = 0.95)  
-  
-## Every comparison is significantly difference except NTC and Water. Possibly not enough water in water sample filter to catch diffs.
 
 #Plot
-sample.type.colors <- c("sample"= "#D43F3AFF","ntc"="#EEA236FF","water"="#5CB85CFF")
+type.colors <- c("type"= "#D43F3AFF","Swap"="#EEA236FF","Home.nursery"="#5CB85CFF")
 
 #nmds
 unifrac.all <- ordinate(Bac.seq, method="NMDS", "unifrac",weighted=TRUE, set.seed(30)) 
@@ -140,36 +155,23 @@ stressplot(unifrac.all)
 scores.ord.u_RelA_stats<-as.data.frame(cbind(vegan::scores(unifrac.all, display="sites")))  
      unifrac.all.sd <- as(sample_data(Bac.seq), "data.frame") #sample df
 
-scores.ord.u_RelA_stats$sample.type <- unifrac.all.sd$sample.type
+scores.ord.u_RelA_stats$type <- unifrac.all.sd$type
 
+#plot samps vs NTC, Mock, Blacks
 ggplot(scores.ord.u_RelA_stats, aes(x = NMDS1, y = NMDS2)) + 
-  geom_point(aes(colour = sample.type), size = 4) +
-  stat_ellipse(aes(x = NMDS1, y = NMDS2, colour = sample.type), linetype = 2) +
+  geom_point(aes(colour = type), size = 4) +
+  stat_ellipse(aes(x = NMDS1, y = NMDS2, colour = type), linetype = 2) +
   ggtitle("NMDS 16s by sample type") +
   theme_classic()
 ```
 
-#Coral only - alpha diversity use non-relA df: Bac.seq
+#Coral samples only
+## alpha diversity use non-relA df: Bac.seq. Microbiome package
 ```{r}
-Bac.seq.c<-subset_samples(Bac.seq, sample.type=="sample") #subset only Mcap
+Bac.seq.c<-subset_samples(Bac.seq, type=="sample") #subset only Mcap
 Bac.seq.c = prune_taxa(taxa_sums(Bac.seq.c) > 0, Bac.seq.c) #this removes any OTU with 0s
 Bac.seq.c.sd <- as(sample_data(Bac.seq.c), "data.frame") #sample df
 
-# Richness ####
-# in phyloseq
-# b.rich<-richness(Bac.seq.c)
-# plot_richness(Bac.seq.c, measures = c("Observed","Shannon"), color="tag.id")
-# plot_richness(Bac.seq.c, measures = c("Observed","Shannon"), color="tag.id") + facet_wrap(~location)
-# plot_richness(Bac.seq.c, measures = c("Observed","Shannon"), color="location") 
-# 
-# GPst = merge_samples(Bac.seq.c, "samp_loc", fun = mean)
-# plot_richness(GPst,  measures=c("Observed", "Shannon"))
-# 
-# GPst = merge_samples(Bac.seq.c, "location", fun = "mean")
-# p<-plot_richness(GPst,  color="location",measures=c("Observed", "Shannon")) #why no color
-# p + geom_point(size=5, alpha=0.7)
- 
-# Do in microbiome package (USING THIS) ####
 erich.tab <-microbiome::alpha(Bac.seq.c, index = "all") # pull out: observed, diversity_shannon, evenness_pielou
 erich.tab2<-erich.tab[-c(2:4,6:8,10:22)] #keep the cols you need
 
@@ -408,40 +410,46 @@ p1 <- p1 + stat_compare_means(comparisons = "location") #non-parametric test (Wi
 
 ```
 
-# Mcap sample data: df of just mcap called "bac"
+# Frozen only
 ```{r}
-Bac = subset_samples(Bac.seq.rel, sample.type== "sample" ) #Coral only, copy
-Bac = prune_taxa(taxa_sums(Bac) > 0, Bac) #this removes any OTU with 0s
-
+Bac.Froz = subset_samples(Bac.seq.rel, Swap== "Frozen" )
+Bac.Froz = subset_samples(Bac.Froz, type== "sample" ) #remove mock/NTCs
+Bac.Froz = subset_samples(Bac.Froz, sample_name!= "Acer129") # remove 2 bad samples
+Bac.Froz = subset_samples(Bac.Froz, sample_name!= "Acer134") # remove 2 bad samples
+Bac.Froz = prune_taxa(taxa_sums(Bac.Froz) > 0, Bac.Froz) #this removes any OTU with 0s
 ```
 #Stats: beta diversity
 ```{r}
 #make unifrac matrix
-Bac.wu <- phyloseq::distance(Bac, method = "wunifrac")
-samp.df <- as(sample_data(Bac), "data.frame") #sample df
-samp.df$tag.id<-as.factor(samp.df$tag.id)
-samp.df$location<-as.factor(samp.df$location)
-samp.df$depth.ft<-as.numeric(samp.df$depth.ft)
-samp.df$date<-as.Date(samp.df$samp.date)
-samp.df$samp_loc<-as.factor(samp.df$samp_loc)
-samp.df$sample_num<-as.factor(samp.df$sample_num)
-samp.df$Prop.D<-as.numeric(samp.df$Prop.D)
+Bac.Froz.wu <- phyloseq::distance(Bac.Froz, method = "wunifrac")
+samp.df <- as(sample_data(Bac.Froz), "data.frame") #sample df
+samp.df$frag.id<-as.factor(samp.df$frag.id)
+samp.df$Home.nursery<-as.factor(samp.df$Home.nursery)
+samp.df$Away.nursery<-as.factor(samp.df$Away.nursery)
+samp.df$genet.ID<-as.factor(samp.df$genet.ID)
 
 #adonis
-
-#between colonies: 
-set.seed(30)
-adonis2(Bac.wu ~ tag.id*location*Prop.D, data = samp.df)
+  #between home nursery: 
+  set.seed(30)
+  adonis2(Bac.Froz.wu ~ Home.nursery, data = samp.df) # p=0.001
+  
+  #between away nursery and home: 
+  set.seed(30)
+  adonis2(Bac.Froz.wu ~ Away.nursery*Home.nursery, data = samp.df) 
+    #Home p=0.001
+    #Away p=0.017
+    #Away*Home p=0.234
 
 # Homogeneity of dispersion test  
-    set.seed(30) # genotype
-    permutest(betadisper(Bac.wu, samp.df$tag.id, type = "centroid"))  # p =0.001
-  ball<-  betadisper(Bac.wu, samp.df$tag.id, type = "centroid")
+    set.seed(30) # HOME
+    permutest(betadisper(Bac.Froz.wu, samp.df$Home.nursery, type = "centroid"))  # p =0.001
+  ball<-  betadisper(Bac.Froz.wu, samp.df$Home.nursery, type = "centroid")
   TukeyHSD(ball,  ordered = FALSE,conf.level = 0.95)
+      #### CRF is different than all others in dispersion. UM diff than mote. 
   
-   set.seed(30) # location
-    permutest(betadisper(Bac.wu, samp.df$location, type = "centroid"))  # p =0.001
-  ball<-  betadisper(Bac.wu, samp.df$location, type = "centroid")
+   set.seed(30) # AWAY NO DIFF!
+    permutest(betadisper(Bac.Froz.wu, samp.df$Away.nursery, type = "centroid"))  # p =0.001
+  ball<-  betadisper(Bac.Froz.wu, samp.df$Away.nursery, type = "centroid")
   TukeyHSD(ball,  ordered = T,conf.level = 0.95)
   
 ```
@@ -450,99 +458,52 @@ NMDS
 ```{r}
 #nmds
 
-unifrac.b <- ordinate(Bac, method="NMDS", "unifrac",weighted=TRUE, set.seed(30)) 
+unifrac.b <- ordinate(Bac.Froz, method="NMDS", "unifrac",weighted=TRUE, set.seed(30)) 
 stressplot(unifrac.b)
 scores.b<-as.data.frame(cbind(vegan::scores(unifrac.b, display="sites")))  
-     unifrac.sd <- as(sample_data(Bac), "data.frame") #sample df
+     unifrac.sd <- as(sample_data(Bac.Froz), "data.frame") #sample df
 
-scores.b$tag.id <- as.factor(unifrac.sd$tag.id)
-scores.b$location <- as.factor(unifrac.sd$location)
-scores.b$dom <- as.factor(unifrac.sd$dom)
-scores.b$samp_loc <- as.factor(unifrac.sd$samp_loc)
-scores.b$dom <- as.factor(unifrac.sd$dom)
-
-scores.b$Prop.D <- as.numeric(as.character(unifrac.sd$Prop.D))
-
+scores.b$Home.nursery <- as.factor(unifrac.sd$Home.nursery)
+scores.b$Away.nursery <- as.factor(unifrac.sd$Away.nursery)
+scores.b$genet.ID <- as.factor(unifrac.sd$genet.ID)
 
 ###### plots
 library(qualpalr) #generate diverging colors
 pal = qualpal(25, colorspace=list(h=c(13,350), s=c(0.3,1), l=c(0.2,0.8)))
 
-ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=location)) + 
-  geom_point(aes(color=location),size = 4) +
+ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
+  geom_point(aes(color=Home.nursery),size = 4) +
         scale_color_manual(values=pal$hex)+
-stat_ellipse(geom="polygon", alpha=1/6, aes(fill=location)) +
+stat_ellipse(geom="polygon", alpha=1/6, aes(fill=Home.nursery)) +
   ggtitle("NMDS 16s") +
-  theme_classic()
+  theme_classic() +
+  facet_wrap(~Away.nursery) #wrap by Away
 
-ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=location)) + 
-  geom_point(aes(color=location),size = 4) +
-      scale_color_manual(values=pal$hex)+
+#by genet and Away
+ggplot(scores.b, aes(x = Away.nursery, y = NMDS2, fill=Away.nursery)) + 
+  geom_point(aes(color=Away.nursery),size = 4) +
+      #scale_color_manual(values=pal$hex)+
 #stat_ellipse(geom="polygon", alpha=1/6, aes(fill=tag.id)) +
   ggtitle("NMDS 16s") +
   theme_classic()+
-  facet_wrap(~tag.id)
-
-#plot means of location overlay
-scores.b2<-scores.b[c(1:2,4)]
-
-scores.b.mean<-  scores.b2 %>% #mean by CD by genotype
-  group_by(location) %>%
-   summarise_at(vars("NMDS1", "NMDS2"), mean)
-
-p<-ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=location)) + 
-  geom_point(aes(color=location),size = 4, alpha=1/5,show.legend=F) +
-        scale_color_manual(values=pal$hex)+
-#stat_ellipse(geom="polygon", alpha=1, aes(fill=tag.id)) +
-  ggtitle("NMDS 16s") +
-  theme_classic()
-p+  geom_point(aes(color=location), data = scores.b.mean, size=8,show.legend=T)
+  facet_wrap(~genet.ID+Home.nursery)
 
 
-#plot means of genotypes overlay
-scores.b2<-scores.b[c(1:3)]
+#do Only home-home
+scores.b.home<-subset(scores.b, Home.nursery==Away.nursery) #subset only if didn't move
+ggplot(scores.b.home, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
+  geom_point(aes(color=Home.nursery),size = 4) +
+       # scale_color_manual(values=pal$hex)+
+stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
+  ggtitle("NMDS 16s Home=Away") +
+  theme_classic() 
 
-scores.b.mean<-  scores.b2 %>% #mean by CD by genotype
-  group_by(tag.id) %>%
-   summarise_at(vars("NMDS1", "NMDS2"), mean)
-
-p<-ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=tag.id)) + 
-  geom_point(aes(color=tag.id),size = 4, alpha=1/5,show.legend=F) +
-        scale_color_manual(values=pal$hex)+
-#stat_ellipse(geom="polygon", alpha=1, aes(fill=tag.id)) +
-  ggtitle("NMDS 16s") +
-  theme_classic()
-p+  geom_point(aes(color=tag.id), data = scores.b.mean, size=8,show.legend=F)
-
-
-#plot means of propD overlay
-scores.b2<-scores.b[c(1:2,5)]
-
-scores.b.mean<-  scores.b2 %>% #mean by CD by genotype
-  group_by(dom) %>%
-   summarise_at(vars("NMDS1", "NMDS2"), mean)
-
-p<-ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=dom)) + 
-  geom_point(aes(color=dom),size = 4, alpha=1/5,show.legend=F) +
-        scale_color_manual(values=pal$hex)+
-#stat_ellipse(geom="polygon", alpha=1, aes(fill=tag.id)) +
-  ggtitle("NMDS 16s") +
-  theme_classic()
-p+  geom_point(aes(color=dom), data = scores.b.mean, size=8,show.legend=F)
-
-
-ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=Prop.D)) + 
-  geom_point(aes(color=Prop.D),size = 4) +
-  scale_color_gradient(D = "#003366", C = "steelblue3")+
-#stat_ellipse(geom="polygon", alpha=1/6, aes(fill=dom)) +
-  ggtitle("NMDS 16s") +
-  theme_classic()
 
 ```
 Branches and plates only
 ```{r}
 #adonis by colony by sample location by branch/plate
-  Branch <- subset_samples(Bac, samp_loc =="Branch"|samp_loc=="Plate") #Subset by colony 
+  Branch <- subset_samples(Bac.Froz, samp_loc =="Branch"|samp_loc=="Plate") #Subset by colony 
   Branch = prune_taxa(taxa_sums(Branch) > 0, Branch) #this removes any OTU with 0s
 
   Branch.dist <- phyloseq::distance(Branch, method = "wunifrac")

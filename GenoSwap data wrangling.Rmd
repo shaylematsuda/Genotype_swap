@@ -66,13 +66,14 @@ genSamp<-read.csv("data/geneticSamples.csv") #load in Kelsey/Rish nursery data
   # notes: swap.genotype is the name to use. the "ziploc genet" name is either bag UM collected in or   the changed name a specific nursery calls the genotype. Swap.geno is the name to use here. Rich      confirmed all cols to the right of 'notes' unneeded
 genSamp2<-genSamp[c(1,4,5)] #keep cols you need
 colnames(genSamp2)[3] ="tube.id" #change col name to sample tube ID
-genSamp3$genet.ID<-gsub("-","",as.character(genSamp3$genet.ID)) #remove all "-", " ", "'"
-genSamp3$genet.ID<-gsub(" ","",as.character(genSamp3$genet.ID)) #remove all "-", " ", "'"
-genSamp3$genet.ID<-gsub("'","",as.character(genSamp3$genet.ID)) #remove all "-", " ", "'"
-genSamp3$collect<-"frozen" #new col to designate fresh collection
+colnames(genSamp2)[2] <- "genet.ID"
+genSamp2$genet.ID<-gsub("-","",as.character(genSamp2$genet.ID)) #remove all "-", " ", "'"
+genSamp2$genet.ID<-gsub(" ","",as.character(genSamp2$genet.ID)) #remove all "-", " ", "'"
+genSamp2$genet.ID<-gsub("'","",as.character(genSamp2$genet.ID)) #remove all "-", " ", "'"
+genSamp2$collect<-"frozen" #new col to designate fresh collection
 
 #Frozen - merge home location data
-Frozen2<-merge(Frozen,genSamp3, by="tube.id", all.x=T) 
+Frozen2<-merge(Frozen,genSamp2, by="tube.id", all.x=T) 
 
 #read in home location for each genet (removed lat/long due to symblols)
 Genotype.Home<-read.csv("Genotype.Home.csv") #load in Kelsey/Rish nursery data
@@ -144,17 +145,17 @@ sam <- sample_data(data.frame(sam1))
 #write.csv(sam, "sam.csv")
 
 #load in OTU: raw_abundanceTable_100.shared
-OTU3k<-read.table("data/16Stake4/16S-pipeline_outputs/Results/raw/details/raw_abundanceTable_100.shared.txt", sep='', header=T)
+OTU3k<-read.table("data/20230804_genoswap_16S-pipeline_outputs/Results/raw/details/raw_abundanceTable_100.shared.txt", sep='', header=T)
 
 test<-OTU3k
 test$id<-sub("_*", "", test$Group)
-write.csv(test, "test.csv") #write and use excel to create a index for group. figure out how to do this for real. 
+#write.csv(test, "test.csv") #write and use excel to create a index for group. figure out how to do this for real. 
 
 #otu
 otu3k1 <- as.matrix(OTU3k[, -(1:3)]) # remove first col "label"
 # replace the "Group" col with actual sample IDs.
 # make a file with the "group" ids and the sample ids for metadata
-indexes<-read.csv("data/index_samp.csv")   #upload the sample ids
+indexes<-read.csv("data/index_new.csv")   #upload the sample ids
 otu3k2<-merge(indexes,OTU3k, by="Group") #add sample names
 otu3k2 <- as.matrix(otu3k2[, -c(1,3:4)]) # remove first col "Group", and label and num OTU
 otu3k2.df<-as.data.frame(otu3k2) #make df copy to make samp names as row names in matrix
@@ -183,7 +184,7 @@ Bac.seq
 Bac.seq.df <- sample_data(Bac.seq)
 
 #load your tre file FastTree_100.nwk
-treefile<- read.tree("data/16Stake4/16S-pipeline_outputs/Results/postprocessing/unifrac/FastTree_100.nwk")
+treefile<- read.tree("data/20230804_genoswap_16S-pipeline_outputs/Results/postprocessing/unifrac/FastTree_100.nwk")
 phy_tree(Bac.seq) <- treefile
 Bac.seq
 
