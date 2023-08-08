@@ -493,6 +493,7 @@ ggplot(scores.b, aes(x = Away.nursery, y = NMDS2, fill=Away.nursery)) +
 scores.b.home<-subset(scores.b, Home.nursery==Away.nursery) #subset only if didn't move
 ggplot(scores.b.home, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
   geom_point(aes(color=Home.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
        # scale_color_manual(values=pal$hex)+
 stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
   ggtitle("NMDS 16s Home=Away") +

@@ -42,11 +42,17 @@ library(geosphere)
 library(ade4)
 library(microbiome)  
 library(knitr)
+library(parzer)
 
 ```
 
 #Load in data and get into phyloseq (save RData file)
 ```{r}       
+
+#parzer package to deal with coordinates
+# ross coordinates how to process https://github.com/jrcunning/CBASS_FL_Acer/blob/main/data/genotype_metadata_raw.csv
+
+
 
 #add col in metatdata for Frozen and Fresh to differentiate the projects. 
 
@@ -77,7 +83,7 @@ Frozen2<-merge(Frozen,genSamp2, by="tube.id", all.x=T)
 
 #read in home location for each genet (removed lat/long due to symblols)
 Genotype.Home<-read.csv("Genotype.Home.csv") #load in Kelsey/Rish nursery data
-Genotype.Home<-Genotype.Home[c(1:2)] #keep cols you need
+#Genotype.Home<-Genotype.Home[c(1:2)] #keep cols you need
 colnames(Genotype.Home)[1] ="genet.ID" #change col name to sample tube ID
 colnames(Genotype.Home)[2] ="Home.nursery"
   Genotype.Home$genet.ID<-gsub("-","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
@@ -86,7 +92,10 @@ colnames(Genotype.Home)[2] ="Home.nursery"
     Genotype.Home<-na.omit(Genotype.Home)
   Genotype.Home$Home.nursery[Genotype.Home$genet.ID == "FM19"] <- "FWC" #these was coded incorectly in the meta sent to you
   Genotype.Home$Home.nursery[Genotype.Home$genet.ID == "FM1"] <- "FWC"
+  Genotype.Home$Latitude<-parse_lat(Genotype.Home$Latitude)
+  Genotype.Home$Longitude<-parse_lon(Genotype.Home$Longitude)
 
+  
 #Frozen - merge home location data
 Frozen3<-merge(Frozen2,Genotype.Home, by="genet.ID", all.x=T) 
   Frozen3$Home.nursery[Frozen3$genet.ID == "ML1"] <- "Mote" ### not coded in meta provided to you
@@ -107,7 +116,9 @@ Frozen3<-merge(Frozen2,Genotype.Home, by="genet.ID", all.x=T)
   Frozen3$Home.nursery[Frozen3$genet.ID == "ML89"] <- "Mote"
   Frozen3$Home.nursery[Frozen3$genet.ID == "ML90"] <- "Mote"
   Frozen3$Home.nursery[Frozen3$genet.ID == "FM19"] <- "FWC"
-Frozen4<-Frozen3[,c(1:9,11)]
+#Frozen4<-Frozen3[,c(1:9,11)] #keep all for now
+Frozen4<-subset(Frozen3, select=-c(10))
+
 
 ##FRESH
 #upload meta for Fresh samples to merge add to genSamp3 from CRII
@@ -118,9 +129,10 @@ genSamp.Fresh<-read.csv("Fresh.meta.away.csv") #load in Kelsey/Rish nursery data
   
 #Fresh - merge home location data
 Fresh2<-merge(Fresh,genSamp.Fresh, by="tube.id", all.x=T) 
-
+Fresh3<-merge(Fresh2,Genotype.Home, all.x=T) 
+  
 #Combine Fresh and Frozen metadata
-meta<-rbind(Fresh2,Frozen4)
+meta<-rbind(Fresh3,Frozen4)
 
 meta$frag.id<-paste(meta$genet.ID, meta$Home.nursery, meta$Away.nursery, meta$Swap)
   meta$tube.id<-as.factor(as.character(meta$tube.id))
