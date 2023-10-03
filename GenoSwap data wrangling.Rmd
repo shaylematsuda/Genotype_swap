@@ -156,8 +156,12 @@ rownames(sam1) <- sam0$sample_name
 sam <- sample_data(data.frame(sam1))
 #write.csv(sam, "sam.csv")
 
+
+
+
+
 #load in OTU: raw_abundanceTable_100.shared
-OTU3k<-read.table("data/20230804_genoswap_16S-pipeline_outputs/Results/raw/details/raw_abundanceTable_100.shared.txt", sep='', header=T)
+OTU3k<-read.table("data/20230804_genoswap_16S-pipeline_outputs/Results/main/details/abundance_table_100.shared.txt", sep='', header=T)
 
 test<-OTU3k
 test$id<-sub("_*", "", test$Group)
@@ -185,7 +189,7 @@ rownames(testOtu2)<- otu3k2.df$sample_name
 otu <- otu_table(testOtu2, taxa_are_rows = FALSE)
 #write.csv(testOtu,"testOtu.csv")
 #tax table annotations_100_taxonomy.csv (edited to be in proper format with proper col names in excel (remove ";"))
-TAX<- read.csv("data/raw_consensusClassification_100.taxonomy.csv", colClasses = "character") 
+TAX<- read.csv("data/20230804_genoswap_16S-pipeline_outputs/Results/main/details/annotations_100.taxonomy.csv", colClasses = "character") 
 tax1 <- as.matrix(TAX[, -1], dimnames = list(TAX$OTU, colnames(TAX[-1])))
 rownames(tax1) <- TAX$OTU
 tax <- tax_table(tax1)
@@ -200,5 +204,5 @@ treefile<- read.tree("data/20230804_genoswap_16S-pipeline_outputs/Results/postpr
 phy_tree(Bac.seq) <- treefile
 Bac.seq
 
-save(Bac.seq, file = "data/Bac.seq_phyloseq.RData")
+save(Bac.seq, file = "data/Bac.seq_phyloseq2500.RData")
 ```

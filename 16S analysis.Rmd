@@ -39,10 +39,12 @@ library(knitr)
 
 #Start analysis here: load in RData if needed
 ```{r}
-load("Data/Bac.seq_phyloseq.RData") #use RAW data that has been pruned. 
+load("Data/Bac.seq_phyloseq2500.RData") #use RAW data that has been pruned. 
 ```
 
 QC data
+
+10/3/23 after looking at raw data now building df with 2500 subsamp cutoff
 ```{r}
 # the df is Bac.seq
 
@@ -68,13 +70,12 @@ ggplot(data = sample.data, aes(x=Index, y=LibrarySize, color = frag.id)) +
   geom_point()+
   facet_wrap(~type)
 
-##START HERE
 #Check duplicates and see which to keep. 
 dups<-subset_samples(Bac.seq, duplicates=="dup")
 TopNOTUsB = names(sort(taxa_sums(dups), TRUE)[1:200]) #pull top ASVs
 bac50 = prune_taxa(TopNOTUsB, dups)
 bacBarPlot<-plot_bar(bac50,  fill="Phylum") +
-  facet_wrap("genet.ID");bacBarPlot #genets_H_A where decisions need to be made: 20 (3, tube 67, 67b, 67c), ML4 (2, Acer272, 272b): Keep Acer 272b and Acer 67c highest read counts
+  facet_wrap("frag.id");bacBarPlot #genets_H_A where decisions need to be made: 20 (3, tube 67, 67b, 67c), ML4 (2, Acer272, 272b): Keep Acer 272b and Acer 67c highest read counts
 
 #remove dups Acer67. Acer67b, Acer272
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67")
@@ -91,7 +92,7 @@ richness(Bac.seq)
 plot_richness(Bac.seq, measures = c("Observed","Shannon"), color="type") 
 evenness(Bac.seq)
 
-#NTC
+#NTC (all NTC subsampled out due to low reads)
 NTCs<-subset_samples(Bac.seq, type=="NTC")
 TopNOTUsNTC = names(sort(taxa_sums(NTCs), TRUE)[1:200])
 bac50 = prune_taxa(TopNOTUsNTC, NTCs)
@@ -103,14 +104,13 @@ evenness(NTCs)
 
 #Mock
 Mock<-subset_samples(Bac.seq, type=="Mock")
-TopNOTUsMock = names(sort(taxa_sums(NTCs), TRUE)[1:200])
+TopNOTUsMock = names(sort(taxa_sums(Mock), TRUE)[1:200])
 bac50 = prune_taxa(TopNOTUsMock, Mock)
 bacBarPlot<-plot_bar(bac50,  fill="Phylum");bacBarPlot
 
 richness(Mock)
 plot_richness(Mock, measures = c("Observed","Shannon"))
 evenness(Mock)
-
 ```
 
 
@@ -157,7 +157,7 @@ scores.ord.u_RelA_stats<-as.data.frame(cbind(vegan::scores(unifrac.all, display=
 
 scores.ord.u_RelA_stats$type <- unifrac.all.sd$type
 
-#plot samps vs NTC, Mock, Blacks
+#plot samps vs  Mock community
 ggplot(scores.ord.u_RelA_stats, aes(x = NMDS1, y = NMDS2)) + 
   geom_point(aes(colour = type), size = 4) +
   stat_ellipse(aes(x = NMDS1, y = NMDS2, colour = type), linetype = 2) +
@@ -165,13 +165,14 @@ ggplot(scores.ord.u_RelA_stats, aes(x = NMDS1, y = NMDS2)) +
   theme_classic()
 ```
 
-#Coral samples only
+# ## Coral samples only
 ## alpha diversity use non-relA df: Bac.seq. Microbiome package
 ```{r}
-Bac.seq.c<-subset_samples(Bac.seq, type=="sample") #subset only Mcap
+Bac.seq.c<-subset_samples(Bac.seq, type=="sample") #subset only coral
 Bac.seq.c = prune_taxa(taxa_sums(Bac.seq.c) > 0, Bac.seq.c) #this removes any OTU with 0s
 Bac.seq.c.sd <- as(sample_data(Bac.seq.c), "data.frame") #sample df
 
+#not working
 erich.tab <-microbiome::alpha(Bac.seq.c, index = "all") # pull out: observed, diversity_shannon, evenness_pielou
 erich.tab2<-erich.tab[-c(2:4,6:8,10:22)] #keep the cols you need
 
@@ -426,9 +427,9 @@ samp.df <- as(sample_data(Bac.Froz), "data.frame") #sample df
 samp.df$frag.id<-as.factor(samp.df$frag.id)
 samp.df$Home.nursery<-as.factor(samp.df$Home.nursery)
 samp.df$Away.nursery<-as.factor(samp.df$Away.nursery)
-samp.df$genet.ID<-as.factor(samp.df$genet.ID)
+samp.df$genet.ID<-as.factor(samp.df$frag.id)
 
-#adonis
+#adonis. 10/3 some missing home nursery, figure out!*******
   #between home nursery: 
   set.seed(30)
   adonis2(Bac.Froz.wu ~ Home.nursery, data = samp.df) # p=0.001
