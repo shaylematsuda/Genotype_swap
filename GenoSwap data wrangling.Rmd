@@ -86,12 +86,7 @@ Genotype.Home<-read.csv("Genotype.Home.csv") #load in Kelsey/Rish nursery data
 #Genotype.Home<-Genotype.Home[c(1:2)] #keep cols you need
 colnames(Genotype.Home)[1] ="genet.ID" #change col name to sample tube ID
 colnames(Genotype.Home)[2] ="Home.nursery"
-    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "T-DT-1"] <- "DT1" #change to correct name 	
-    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "T-DT-2"] <- "DT2" #change to correct name 	
-    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "Cheetos-b"] <- "Cheetos-B" #change to correct name 	
-    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "North Midchannel-A"] <- "North Midchannel" #change to correct name 	
-    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "Cheetos-b"] <- "Cheetos-B" #change to correct name 	
-    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "Cheetos-b"] <- "Cheetos-B" #change to correct name 
+
   Genotype.Home$genet.ID<-gsub("-","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
   Genotype.Home$genet.ID<-gsub(" ","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
   Genotype.Home$genet.ID<-gsub("'","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
@@ -160,7 +155,8 @@ meta$frag.id<-paste(meta$genet.ID, meta$Home.nursery, meta$Away.nursery, meta$Sw
 
 #Make phyloseq Object
 sam0 <- meta
-sam1 <- as.matrix(sam0[, -1])
+#sam1 <- as.matrix(sam0[, -1])
+sam1 <- as.matrix(sam0)
 rownames(sam1) <- sam0$sample_name
 sam <- sample_data(data.frame(sam1))
 #write.csv(sam, "sam.csv")
@@ -215,3 +211,5 @@ Bac.seq
 
 save(Bac.seq, file = "data/Bac.seq_phyloseq2500.RData")
 ```
+
+

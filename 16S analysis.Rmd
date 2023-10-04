@@ -45,12 +45,7 @@ load("Data/Bac.seq_phyloseq2500.RData") #load cleaned data
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67")
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67b")
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer272")
-
-bad.samples <-  c("Acer67", "Acer67b","Acer272")  #remove from phylo obj
-all.samples<- sample_names(Bac.seq) 
-all.samples <- all.samples[!(all.samples %in% bad.samples)]
  
-Bac.seq<- prune_samples(all.samples, Bac.seq)
 ```
 
 QC data - do not have to run each time, used to figure out cut offs and look at raw data
@@ -428,31 +423,35 @@ samp.df <- as(sample_data(Bac.Froz), "data.frame") #sample df
 samp.df$frag.id<-as.factor(samp.df$frag.id)
 samp.df$Home.nursery<-as.factor(samp.df$Home.nursery)
 samp.df$Away.nursery<-as.factor(samp.df$Away.nursery)
-samp.df$genet.ID<-as.factor(samp.df$frag.id)
+samp.df$frag.id<-as.factor(samp.df$frag.id)
+samp.df$genet.id<-as.factor(samp.df$genet.id)
 
 #adonis
-  #between home nursery: 
+  #between home nursery: p=0.001
   set.seed(30)
-  adonis2(Bac.Froz.wu ~ Home.nursery, data = samp.df) # p=0.001
+  adonis2(Bac.Froz.wu ~ Home.nursery, data = samp.df) 
   
-  #between away nursery and home: 
+  #between away nursery and home:
   set.seed(30)
   adonis2(Bac.Froz.wu ~ Away.nursery*Home.nursery, data = samp.df) 
+    #Away p=0.012
     #Home p=0.001
-    #Away p=0.017
-    #Away*Home p=0.234
+    #Away*Home p=0.153
 
 # Homogeneity of dispersion test  
-    set.seed(30) # HOME
+  #HOME
+    set.seed(30) 
     permutest(betadisper(Bac.Froz.wu, samp.df$Home.nursery, type = "centroid"))  # p =0.001
   ball<-  betadisper(Bac.Froz.wu, samp.df$Home.nursery, type = "centroid")
   TukeyHSD(ball,  ordered = FALSE,conf.level = 0.95)
-      #### CRF is different than all others in dispersion. UM diff than mote. 
-  
-   set.seed(30) # AWAY NO DIFF!
+  #### CRF is different than all others in dispersion. 
+
+    # AWAY
+   set.seed(30) #
     permutest(betadisper(Bac.Froz.wu, samp.df$Away.nursery, type = "centroid"))  # p =0.001
   ball<-  betadisper(Bac.Froz.wu, samp.df$Away.nursery, type = "centroid")
   TukeyHSD(ball,  ordered = T,conf.level = 0.95)
+  ## No differences, which is expected
   
 ```
 NMDS
@@ -468,30 +467,25 @@ scores.b<-as.data.frame(cbind(vegan::scores(unifrac.b, display="sites")))
 scores.b$Home.nursery <- as.factor(unifrac.sd$Home.nursery)
 scores.b$Away.nursery <- as.factor(unifrac.sd$Away.nursery)
 scores.b$genet.ID <- as.factor(unifrac.sd$genet.ID)
+scores.b$genet.ID_Home <- paste(scores.b$genet.ID,scores.b$Home.nursery)
 
 ###### plots
 library(qualpalr) #generate diverging colors
 pal = qualpal(25, colorspace=list(h=c(13,350), s=c(0.3,1), l=c(0.2,0.8)))
 
+
+
+
+# plot by away
 ggplot(scores.b, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
   geom_point(aes(color=Home.nursery),size = 4) +
         scale_color_manual(values=pal$hex)+
 stat_ellipse(geom="polygon", alpha=1/6, aes(fill=Home.nursery)) +
   ggtitle("NMDS 16s") +
   theme_classic() +
-  facet_wrap(~Away.nursery) #wrap by Away
+    facet_wrap(~Away.nursery)
 
-#by genet and Away
-ggplot(scores.b, aes(x = Away.nursery, y = NMDS2, fill=Away.nursery)) + 
-  geom_point(aes(color=Away.nursery),size = 4) +
-      #scale_color_manual(values=pal$hex)+
-#stat_ellipse(geom="polygon", alpha=1/6, aes(fill=tag.id)) +
-  ggtitle("NMDS 16s") +
-  theme_classic()+
-  facet_wrap(~genet.ID+Home.nursery)
-
-
-#do Only home-home
+#Plot Only home-home
 scores.b.home<-subset(scores.b, Home.nursery==Away.nursery) #subset only if didn't move
 ggplot(scores.b.home, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
   geom_point(aes(color=Home.nursery),size = 4) +
@@ -501,41 +495,114 @@ stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
   ggtitle("NMDS 16s Home=Away") +
   theme_classic() 
 
+#Plot CRF (away)
+scores.b.CRF<-subset(scores.b, Away.nursery=="CRF") #subset only if didn't move
+ggplot(scores.b.CRF, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
+  geom_point(aes(color=Home.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)+
+stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
+  ggtitle("NMDS 16s CRF") +
+  theme_classic() 
+
+#Plot UM (away)
+scores.b.UM<-subset(scores.b, Away.nursery=="UM") #subset only if didn't move
+ggplot(scores.b.UM, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
+  geom_point(aes(color=Home.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)+
+stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
+  ggtitle("NMDS 16s UM") +
+  theme_classic()
+
+#Plot FWC (away)
+scores.b.FWC<-subset(scores.b, Away.nursery=="FWC") #subset only if didn't move
+ggplot(scores.b.FWC, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
+  geom_point(aes(color=Home.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)+
+stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
+  ggtitle("NMDS 16s FWC") +
+  theme_classic()
+
+#Plot Mote (away)
+scores.b.Mote<-subset(scores.b, Away.nursery=="Mote") #subset only if didn't move
+ggplot(scores.b.Mote, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
+  geom_point(aes(color=Home.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)+
+stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
+  ggtitle("NMDS 16s Mote") +
+  theme_classic()
+
+#Plot Mote (away)
+scores.b.Mote<-subset(scores.b, Away.nursery=="Mote") #subset only if didn't move
+ggplot(scores.b.Mote, aes(x = NMDS1, y = NMDS2, fill=Home.nursery)) + 
+  geom_point(aes(color=Home.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)+
+stat_ellipse(geom="polygon", alpha=1/16, aes(fill=Home.nursery)) +
+  ggtitle("NMDS 16s Mote") +
+  theme_classic()
+
+
+#### Plot CRF Home Corals at other places by genotype ###
+scores.b.CRF.Home<-subset(scores.b, Home.nursery=="CRF") #subset only if didn't move
+ggplot(scores.b.CRF.Home, aes(x = NMDS1, y = NMDS2, fill=Away.nursery)) + 
+  geom_point(aes(color=Away.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)
+  ggtitle("NMDS 16s CRF Home") +
+  theme_classic()+
+    facet_wrap(~genet.ID)
+
+#### Plot Mote Home Corals at other places by genotype ###
+scores.b.Mote.Home<-subset(scores.b, Home.nursery=="Mote") #subset only if didn't move
+ggplot(scores.b.Mote.Home, aes(x = NMDS1, y = NMDS2, fill=Away.nursery)) + 
+  geom_point(aes(color=Away.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)
+  ggtitle("NMDS 16s Mote Home") +
+  theme_classic()+
+    facet_wrap(~genet.ID)
+
+
+#### Plot UM Home Corals at other places by genotype ###
+scores.b.UM.Home<-subset(scores.b, Home.nursery=="UM") #subset only if didn't move
+ggplot(scores.b.UM.Home, aes(x = NMDS1, y = NMDS2, fill=Away.nursery)) + 
+  geom_point(aes(color=Away.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)
+  ggtitle("NMDS 16s UM Home") +
+  theme_classic()+
+    facet_wrap(~genet.ID)
+
+#### Plot NSU Home Corals at other places by genotype ###
+scores.b.NSU.Home<-subset(scores.b, Home.nursery=="NSU") #subset only if didn't move
+ggplot(scores.b.NSU.Home, aes(x = NMDS1, y = NMDS2, fill=Away.nursery)) + 
+  geom_point(aes(color=Away.nursery),size = 4) +
+   # geom_line(aes(color=genet.ID))+
+       # scale_color_manual(values=pal$hex)
+  ggtitle("NMDS 16s NSU Home") +
+  theme_classic()+
+    facet_wrap(~genet.ID)
+
+
 
 ```
-Branches and plates only
-```{r}
-#adonis by colony by sample location by branch/plate
-  Branch <- subset_samples(Bac.Froz, samp_loc =="Branch"|samp_loc=="Plate") #Subset by colony 
-  Branch = prune_taxa(taxa_sums(Branch) > 0, Branch) #this removes any OTU with 0s
 
-  Branch.dist <- phyloseq::distance(Branch, method = "wunifrac")
-  samp.Branch.dist <- as(sample_data(Branch), "data.frame") #sample df
+##Start here
 
-  samp.Branch.dist$tag.id<-as.factor(samp.Branch.dist$tag.id)
-    samp.Branch.dist$sub_loc<-as.factor(samp.Branch.dist$sub_loc)
-        samp.Branch.dist$dom<-as.factor(samp.Branch.dist$dom)
-    samp.Branch.dist$Prop.D<-as.numeric(samp.Branch.dist$Prop.D)
 
-#adonis by colony level and branch location
-  set.seed(30)
-  adonis2(Branch.dist ~ tag.id*sub_loc, data = samp.Branch.dist)
-  
-  # Homogeneity of dispersion test  
-    set.seed(30)
-    permutest(betadisper(Branch.dist, samp.Branch.dist$tag.id, type = "centroid"))  # p =0.001
-  ball<-  betadisper(Branch.dist, samp.Branch.dist$tag.id, type = "centroid")
-  TukeyHSD(ball,  ordered = FALSE,conf.level = 0.95)
-  
-  set.seed(30)
-  adonis2(Branch.dist ~ tag.id*samp_loc*sub_loc, data = samp.Branch.dist)
-  
-#adonis
-  set.seed(30)
-  adonis2(Branch.dist ~ tag.id*branch_plate*sub_loc, data = samp.Branch.dist)
 
-  
-```
+
+
+
+
+
+
+
+
 #top taxa for ARIANA
 ```{r}
 #OTU level
