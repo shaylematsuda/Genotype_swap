@@ -86,12 +86,21 @@ Genotype.Home<-read.csv("Genotype.Home.csv") #load in Kelsey/Rish nursery data
 #Genotype.Home<-Genotype.Home[c(1:2)] #keep cols you need
 colnames(Genotype.Home)[1] ="genet.ID" #change col name to sample tube ID
 colnames(Genotype.Home)[2] ="Home.nursery"
+    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "T-DT-1"] <- "DT1" #change to correct name 	
+    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "T-DT-2"] <- "DT2" #change to correct name 	
+    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "Cheetos-b"] <- "Cheetos-B" #change to correct name 	
+    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "North Midchannel-A"] <- "North Midchannel" #change to correct name 	
+    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "Cheetos-b"] <- "Cheetos-B" #change to correct name 	
+    Genotype.Home$genet.ID[Genotype.Home$genet.ID == "Cheetos-b"] <- "Cheetos-B" #change to correct name 
   Genotype.Home$genet.ID<-gsub("-","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
   Genotype.Home$genet.ID<-gsub(" ","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
   Genotype.Home$genet.ID<-gsub("'","",as.character(Genotype.Home$genet.ID)) #remove all "-", " ", "'"
     Genotype.Home<-na.omit(Genotype.Home)
   Genotype.Home$Home.nursery[Genotype.Home$genet.ID == "FM19"] <- "FWC" #these was coded incorectly in the meta sent to you
   Genotype.Home$Home.nursery[Genotype.Home$genet.ID == "FM1"] <- "FWC"
+	
+
+
   Genotype.Home$Latitude<-parse_lat(Genotype.Home$Latitude)
   Genotype.Home$Longitude<-parse_lon(Genotype.Home$Longitude)
 

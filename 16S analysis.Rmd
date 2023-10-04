@@ -39,11 +39,21 @@ library(knitr)
 
 #Start analysis here: load in RData if needed
 ```{r}
-load("Data/Bac.seq_phyloseq2500.RData") #use RAW data that has been pruned. 
+load("Data/Bac.seq_phyloseq2500.RData") #load cleaned data 
+
+#remove dups Acer67. Acer67b, Acer272
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67b")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer272")
+
+bad.samples <-  c("Acer67", "Acer67b","Acer272")  #remove from phylo obj
+all.samples<- sample_names(Bac.seq) 
+all.samples <- all.samples[!(all.samples %in% bad.samples)]
+ 
+Bac.seq<- prune_samples(all.samples, Bac.seq)
 ```
 
-QC data
-
+QC data - do not have to run each time, used to figure out cut offs and look at raw data
 10/3/23 after looking at raw data now building df with 2500 subsamp cutoff
 ```{r}
 # the df is Bac.seq
@@ -77,16 +87,7 @@ bac50 = prune_taxa(TopNOTUsB, dups)
 bacBarPlot<-plot_bar(bac50,  fill="Phylum") +
   facet_wrap("frag.id");bacBarPlot #genets_H_A where decisions need to be made: 20 (3, tube 67, 67b, 67c), ML4 (2, Acer272, 272b): Keep Acer 272b and Acer 67c highest read counts
 
-#remove dups Acer67. Acer67b, Acer272
-Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67")
-Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67b")
-Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer272")
 
-bad.samples <-  c("Acer67", "Acer67b","Acer272")  #remove from phylo obj
-all.samples<- sample_names(Bac.seq) 
-all.samples <- all.samples[!(all.samples %in% bad.samples)]
- 
-Bac.seq<- prune_samples(all.samples, Bac.seq)
 
 richness(Bac.seq)
 plot_richness(Bac.seq, measures = c("Observed","Shannon"), color="type") 
@@ -429,7 +430,7 @@ samp.df$Home.nursery<-as.factor(samp.df$Home.nursery)
 samp.df$Away.nursery<-as.factor(samp.df$Away.nursery)
 samp.df$genet.ID<-as.factor(samp.df$frag.id)
 
-#adonis. 10/3 some missing home nursery, figure out!*******
+#adonis
   #between home nursery: 
   set.seed(30)
   adonis2(Bac.Froz.wu ~ Home.nursery, data = samp.df) # p=0.001
