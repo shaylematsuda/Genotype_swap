@@ -3,6 +3,8 @@ title: "16S analysis"
 author: "matsuda"
 date: "2023-07-20"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 The data analysis portion for the genotype swap experiment
 ```{r setup, include=FALSE}
@@ -39,7 +41,7 @@ library(knitr)
 
 #Start analysis here: load in RData if needed
 ```{r}
-load("Data/Bac.seq_phyloseq2500.RData") #load cleaned data 
+load("/Users/shaylematsuda/Desktop/Projects/GenoSwap/Genotype_swap/data/RData/Bac.seq_phyloseq2500.RData") #load cleaned data 
 
 #remove dups Acer67. Acer67b, Acer272
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67")
@@ -163,24 +165,59 @@ ggplot(scores.ord.u_RelA_stats, aes(x = NMDS1, y = NMDS2)) +
 
 # ## Coral samples only
 ## alpha diversity use non-relA df: Bac.seq. Microbiome package
+
+# Frozen and Fresh separate out
 ```{r}
+#Fresh and Frozen
 Bac.seq.c<-subset_samples(Bac.seq, type=="sample") #subset only coral
 Bac.seq.c = prune_taxa(taxa_sums(Bac.seq.c) > 0, Bac.seq.c) #this removes any OTU with 0s
 Bac.seq.c.sd <- as(sample_data(Bac.seq.c), "data.frame") #sample df
 
-#not working
-#erich.tab <-microbiome::alpha(Bac.seq.c, index = "all") # pull out: observed, diversity_shannon, evenness_pielou
-# erich.tab2<-erich.tab[-c(2:4,6:8,10:22)] #keep the cols you need
-# 
-#  erich.tab2$location <- as.factor(Bac.seq.c.sd$location)       #add back in meta
-#   erich.tab2$tag.id <- as.factor(Bac.seq.c.sd$tag.id)
-#   erich.tab2$samp_loc <- as.factor(Bac.seq.c.sd$samp_loc)
-#   erich.tab2$dom <- as.factor(Bac.seq.c.sd$dom)
-#   erich.tab2$Prop.D <- as.numeric(Bac.seq.c.sd$Prop.D)
-#   erich.tab2$date<-as.character(Bac.seq.c.sd$samp.date)
-#   erich.tab2$date<-as.Date(erich.tab2$date)
-# 
-#   erich.tab2$location <- factor(erich.tab2$location, levels=c("Branch tip", "Branch mid", "Branch base", "Plate top", "Plate edge", "Plate underside", "Deepest","Lowest")) #reorder factors
+
+
+#Frozen
+Bac.seq.c.frozen<-subset_samples(Bac.seq, Swap=="Frozen") #subset only coral
+Bac.seq.c.frozen = prune_taxa(taxa_sums(Bac.seq.c.frozen) > 0, Bac.seq.c.frozen) #this removes any OTU with 0s
+Bac.seq.c.sd.frozen <- as(sample_data(Bac.seq.c.frozen), "data.frame") #sample df
+
+#Fresh
+Bac.seq.c.fresh<-subset_samples(Bac.seq, Swap=="Fresh") #subset only coral
+Bac.seq.c.fresh = prune_taxa(taxa_sums(Bac.seq.c.fresh) > 0, Bac.seq.c.fresh) #this removes any OTU with 0s
+Bac.seq.c.sd.fresh <- as(sample_data(Bac.seq.c.fresh), "data.frame") #sample df
+
+```
+#Alpha all
+
+```{r}
+
+sample_sums(Bac.seq.c)
+#view otu
+# Extract abundance matrix from the phyloseq object
+OTU1 = as(otu_table(Bac.seq.c), "matrix")
+# transpose if necessary
+if(taxa_are_rows(Bac.seq.c)){OTU1 <- t(OTU1)}
+# Coerce to data.frame
+OTUdf = as.data.frame(OTU1)#@write.csv(OTUdf,"OTUdf.csv")
+
+# pull out: observed, diversity_shannon, evenness_pielou
+erich.tab.obs <-microbiome::alpha(Bac.seq.c, index = "observed") 
+  erich.tab.obs$frag.id <- as.factor(Bac.seq.c.sd$frag.id)
+erich.tab.shan <-microbiome::alpha(Bac.seq.c, index = "diversity_shannon")
+    erich.tab.shan$frag.id <- as.factor(Bac.seq.c.sd$frag.id)
+erich.tab.even <-microbiome::alpha(Bac.seq.c, index = "evenness_pielou")
+    erich.tab.even$frag.id <- as.factor(Bac.seq.c.sd$frag.id)
+
+alpha<-merge(erich.tab.obs, erich.tab.even, by.all="frag.id")
+alpha<-merge(alpha, erich.tab.shan, by="frag.id")
+write.csv(erich.tab.obs, "erich.tab.obs.csv")
+    alpha$genet.ID <- as.factor(Bac.seq.c.sd$genet.ID)
+    alpha$Home.nursery <- as.factor(Bac.seq.c.sd$Home.nursery)
+    alpha$Away.nursery <- as.factor(Bac.seq.c.sd$Away.nursery)
+    alpha$Swap <- as.factor(Bac.seq.c.sd$Swap)
+ 
+
+
+
 
 #ANOVAS
 #shannon ####
