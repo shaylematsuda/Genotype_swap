@@ -217,22 +217,17 @@ alpha<-merge(alpha, erich.tab.shan, by="frag.id")
 alpha<-merge(alpha, Bac.seq.c.sd, by.x="frag.id")
 
 #ANOVAS
+```
+Shannon Diversity
+```{r}
 #shannon ####
   hist(alpha$diversity_shannon)
   set.seed(30)
   aov.shannon = aov(diversity_shannon ~ Home.nursery*Away.nursery*genet.ID, data=alpha)
-    summary(aov.shannon) # only Home location matters (p=0.0285)
-  aov.shannon = aov(diversity_shannon ~ Home.nursery, data=alpha) #try only by home
-    summary(aov.shannon) 
-    TukeyHSD(aov.shannon)# nothing significant
-  aov.shannon = aov(diversity_shannon ~ genet.ID, data=alpha) #not significant
-    summary(aov.shannon) 
+    summary(aov.shannon) # home p=0.0285, genet p=0.0002, home*away p=0.039
     
-    #look at residuals - nor running
-   # car::qqPlot(residuals(aov.shannon))
-    #car::leveneTest(residuals(aov.shannon)~Home.nursery, data=alpha) #not
-    
-  shannon_mean <- ddply(alpha, c("Home.nursery"), summarise, #summarize cell counts
+#means
+shannon_mean <- ddply(alpha, c("Home.nursery","Away.nursery"), summarise, #summarize cell counts
                  N    = length(diversity_shannon[!is.na(diversity_shannon)]), #calculate the length of the data frame, excluding NA’s
                  mean = mean(diversity_shannon, na.rm=TRUE), #calculate mean of response variable, removing NA's
                  sd   = sd(diversity_shannon, na.rm=TRUE), #calculate standard deviation
@@ -242,7 +237,7 @@ alpha<-merge(alpha, Bac.seq.c.sd, by.x="frag.id")
 
 shannon_plot<-ggplot(data=shannon_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
-                width=0.1, show.legend = F)+
+                width=0.1, show.legend = T)+
   geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
   xlab("") + #Label the X Axis
     ylab("") + #Label the X Axis
@@ -260,34 +255,85 @@ shannon_plot<-ggplot(data=shannon_mean, aes(x=Home.nursery, y=mean, color=Home.n
   #       panel.background = element_rect(colour = "black", size=1))+
         theme(aspect.ratio=1)+
    ylab(expression(paste("Shannon Diversity"))) +
-   ggtitle("Shannon")+
+   ggtitle("Shannon by home")+
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
-  theme(plot.title = element_text(size=20, face = "italic"));shannon_plot
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery);shannon_plot
 
-#observed   ####
-   hist(alpha$observed) #heavily skewed
-  ggqqplot(alpha$observed)
-  
-  alpha$observed_log<-log10(alpha$observed)
-  hist(alpha$observed_log) #good
-  
+#shannon by sample type #### 
+ shannon_mean <- ddply(alpha, c("Home.nursery","Away.nursery", "Swap"), summarise, #summarize cell counts
+                 N    = length(diversity_shannon[!is.na(diversity_shannon)]), #calculate the length of the data frame, excluding NA’s
+                 mean = mean(diversity_shannon, na.rm=TRUE), #calculate mean of response variable, removing NA's
+                 sd   = sd(diversity_shannon, na.rm=TRUE), #calculate standard deviation
+                 se   = sd / sqrt(N), #calculate standard error
+                 max = max(diversity_shannon, na.rm=TRUE) #calculate max, could also calculate min () if desired
+);shannon_mean
+
+#plot facet away
+shannon_plot<-ggplot(data=shannon_mean, aes(x=Home.nursery, y=mean, color=Swap)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Swap), size=4, show.legend = F)+
+  xlab("Home Nursery") + #Label the X Axis
+    ylab("Shannon Diversity") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Shannon Diversity"))) +
+   ggtitle("Shannon by Away Nursery")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery);shannon_plot
+
+#plot facet home
+shannon_plot<-ggplot(data=shannon_mean, aes(x=Away.nursery, y=mean, color=Swap)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Swap), size=4, show.legend = F)+
+  xlab("Away Nursery") + #Label the X Axis
+    ylab("Shannon Diversity") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Shannon Diversity"))) +
+   ggtitle("Shannon by Home Nursery")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Home.nursery);shannon_plot
+
+
+
+```
+Observed Richness
+```{r}
+#Richness ####
+  hist(alpha$observed)
   set.seed(30)
-    aov.observed.species = aov(observed_log ~ tag.id*location*Prop.D, data=alpha)
-      summary(aov.observed.species) # only location sig
-  
-  set.seed(30)
-   aov.observed.species = aov(observed_log ~ date, data=alpha)
-    summary(aov.observed.species) #date not important
-  
-  set.seed(30) #run for tukey
-   aov.observed.species = aov(observed ~ location, data=alpha)
-    summary(aov.observed.species) #sig
+  aov.observed = aov(observed ~ Home.nursery*Away.nursery*genet.ID, data=alpha)
+    summary(aov.observed) # away p=0.038
     
-  TukeyHSD(aov.observed.species)# surprise, branch tips sig differ from all other locations
-    car::qqPlot(residuals(aov.observed.species))
-    car::leveneTest(residuals(aov.observed.species)~location, data=alpha) #passes
-
-  observed_mean <- ddply(alpha, c("location"), summarise, #summarize cell counts
+#means
+observed_mean <- ddply(alpha, c("Home.nursery","Away.nursery"), summarise, #summarize cell counts
                  N    = length(observed[!is.na(observed)]), #calculate the length of the data frame, excluding NA’s
                  mean = mean(observed, na.rm=TRUE), #calculate mean of response variable, removing NA's
                  sd   = sd(observed, na.rm=TRUE), #calculate standard deviation
@@ -295,12 +341,12 @@ shannon_plot<-ggplot(data=shannon_mean, aes(x=Home.nursery, y=mean, color=Home.n
                  max = max(observed, na.rm=TRUE) #calculate max, could also calculate min () if desired
 );observed_mean
 
-observed_plot<-ggplot(data=observed_mean, aes(x=location, y=mean, color=location)) +
+observed_plot<-ggplot(data=observed_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
-                width=0.1, show.legend = F)+
-  geom_point(aes(color=location), size=4, show.legend = F)+
-  xlab("") + #Label the X Axis
-    ylab("") + #Label the X Axis
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab("Away Nursery") + #Label the X Axis
+    ylab("Observed") + #Label the X Axis
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         axis.title=element_text(size=14,face="bold"), #Set axis format
@@ -315,52 +361,97 @@ observed_plot<-ggplot(data=observed_mean, aes(x=location, y=mean, color=location
   #       panel.background = element_rect(colour = "black", size=1))+
         theme(aspect.ratio=1)+
    ylab(expression(paste("observed Diversity"))) +
-   ggtitle("observed")+
+   ggtitle("observed by Home")+
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
-  theme(plot.title = element_text(size=20, face = "italic"));observed_plot
- 
- #evenness ####
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery);observed_plot
 
- hist(alpha$evenness_pielou)
-  ggqqplot(alpha$evenness_pielou)
-   hist(alpha$evenness_pielou_log10)#hist of data looks best of all transformations but not great. 
+#observed by sample type #### 
+ observed_mean <- ddply(alpha, c("Home.nursery","Away.nursery", "Swap"), summarise, #summarize cell counts
+                 N    = length(observed[!is.na(observed)]), #calculate the length of the data frame, excluding NA’s
+                 mean = mean(observed, na.rm=TRUE), #calculate mean of response variable, removing NA's
+                 sd   = sd(observed, na.rm=TRUE), #calculate standard deviation
+                 se   = sd / sqrt(N), #calculate standard error
+                 max = max(observed, na.rm=TRUE) #calculate max, could also calculate min () if desired
+);observed_mean
 
+#plot facet away
+observed_plot<-ggplot(data=observed_mean, aes(x=Home.nursery, y=mean, color=Swap)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Swap), size=4, show.legend = F)+
+  xlab("Home Nursery") + #Label the X Axis
+    ylab("observed Diversity") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("observed Diversity"))) +
+   ggtitle("observed by Away Nursery")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery);observed_plot
+
+#plot facet home
+observed_plot<-ggplot(data=observed_mean, aes(x=Away.nursery, y=mean, color=Swap)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Swap), size=4, show.legend = F)+
+  xlab("Away Nursery") + #Label the X Axis
+    ylab("observed Diversity") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("observed Diversity"))) +
+   ggtitle("observed by Home Nursery")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Home.nursery);observed_plot
+
+
+
+```
+Evenness
+```{r}
+#evenness ####
+  hist(alpha$evenness_pielou)
   set.seed(30)
-    aov.evenness_pielou.species = aov(evenness_pielou ~ tag.id*location*Prop.D, data=alpha)
-      summary(aov.evenness_pielou.species) # Tag ID and location significant
-  
-    car::qqPlot(residuals(aov.evenness_pielou.species))
-    car::leveneTest(residuals(aov.evenness_pielou.species)~location, data=alpha) #fails
-
-    #transformed data also fails, stick with original data (sqrt fails, log fails, in fails, arcsqrt fails)
+  aov.evenness = aov(evenness_pielou ~ Home.nursery*Away.nursery*genet.ID, data=alpha)
+    summary(aov.evenness) # home p<0.001, away p<0.001, genet p<0.001, home*away p<0.001
     
-  aov.evenness_pielou.species = aov(evenness_pielou ~ date, data=alpha)
-  summary(aov.evenness_pielou.species) #not sig
-  
-  aov.evenness_pielou.species = aov(evenness_pielou ~ location, data=alpha)
-  summary(aov.evenness_pielou.species) # sig
-  TukeyHSD(aov.evenness_pielou.species)#
-
-  aov.evenness_pielou.species = aov(evenness_pielou ~ tag.id, data=alpha)
-  summary(aov.evenness_pielou.species) # p < 0.001
-  TukeyHSD(aov.evenness_pielou.species)# 
-  
-  aov.evenness_pielou.species = aov(evenness_pielou ~ Prop.D, data=alpha)
-  summary(aov.evenness_pielou.species) # p =.43
-  
-  evenness_pielou_mean <- ddply(alpha, c("location"), summarise, #summarize cell counts
+#means
+evenness_mean <- ddply(alpha, c("Home.nursery","Away.nursery"), summarise, #summarize cell counts
                  N    = length(evenness_pielou[!is.na(evenness_pielou)]), #calculate the length of the data frame, excluding NA’s
                  mean = mean(evenness_pielou, na.rm=TRUE), #calculate mean of response variable, removing NA's
                  sd   = sd(evenness_pielou, na.rm=TRUE), #calculate standard deviation
                  se   = sd / sqrt(N), #calculate standard error
                  max = max(evenness_pielou, na.rm=TRUE) #calculate max, could also calculate min () if desired
-);evenness_pielou_mean
+);evenness_mean
 
-evenness_pielou_plot<-ggplot(data=evenness_pielou_mean, aes(x=location, y=mean, color=location)) +
+evenness_plot<-ggplot(data=evenness_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
-                width=0.1, show.legend = F)+
-  geom_point(aes(color=location), size=4, show.legend = F)+
-  xlab("") + #Label the X Axis
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab("Home") + #Label the X Axis
     ylab("") + #Label the X Axis
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
@@ -375,16 +466,280 @@ evenness_pielou_plot<-ggplot(data=evenness_pielou_mean, aes(x=location, y=mean, 
   #       panel.grid.minor = element_blank(),
   #       panel.background = element_rect(colour = "black", size=1))+
         theme(aspect.ratio=1)+
-   ylab(expression(paste("evenness_pielou Diversity"))) +
-   ggtitle("evenness_pielou")+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
-  theme(plot.title = element_text(size=20, face = "italic"));evenness_pielou_plot 
-  
+   ylab(expression(paste("evenness Diversity"))) +
+   ggtitle("evenness by home")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery);evenness_plot
+
+#evenness by sample type #### 
+ evenness_mean <- ddply(alpha, c("Home.nursery","Away.nursery", "Swap"), summarise, #summarize cell counts
+                 N    = length(evenness_pielou[!is.na(evenness_pielou)]), #calculate the length of the data frame, excluding NA’s
+                 mean = mean(evenness_pielou, na.rm=TRUE), #calculate mean of response variable, removing NA's
+                 sd   = sd(evenness_pielou, na.rm=TRUE), #calculate standard deviation
+                 se   = sd / sqrt(N), #calculate standard error
+                 max = max(evenness_pielou, na.rm=TRUE) #calculate max, could also calculate min () if desired
+);evenness_mean
+
+#plot facet away
+evenness_plot<-ggplot(data=evenness_mean, aes(x=Home.nursery, y=mean, color=Swap)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Swap), size=4, show.legend = F)+
+  xlab("Home Nursery") + #Label the X Axis
+    ylab("evenness Diversity") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("evenness Diversity"))) +
+   ggtitle("evenness by Away Nursery")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery);evenness_plot
+
+#plot facet home
+evenness_plot<-ggplot(data=evenness_mean, aes(x=Away.nursery, y=mean, color=Swap)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = T)+
+  geom_point(aes(color=Swap), size=4, show.legend = F)+
+  xlab("Away Nursery") + #Label the X Axis
+    ylab("evenness Diversity") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("evenness Diversity"))) +
+   ggtitle("evenness by Home Nursery")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Home.nursery);evenness_plot
+
+
+
+
+```
+
+Plot by Frozen only
+```{r}
+#Plots by AWAY ####
 #plot together  
+alpha.frozen<-subset(alpha, Swap=="Frozen")
 
-grid.arrange( observed_plot, evenness_pielou_plot,shannon_plot, nrow = 1)
+#means
+observed_mean <- ddply(alpha, c("Home.nursery","Away.nursery"), summarise, #summarize cell counts
+                 N    = length(observed[!is.na(observed)]), #calculate the length of the data frame, excluding NA’s
+                 mean = mean(observed, na.rm=TRUE), #calculate mean of response variable, removing NA's
+                 sd   = sd(observed, na.rm=TRUE), #calculate standard deviation
+                 se   = sd / sqrt(N), #calculate standard error
+                 max = max(observed, na.rm=TRUE) #calculate max, could also calculate min () if desired
+);observed_mean
 
-  
+observed_plot<-ggplot(data=observed_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = F)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab(" ") + #Label the X Axis
+    ylab("Observed") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Richness"))) +
+   ggtitle("Richness")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery, nrow=1);observed_plot
+
+#Shannon
+#means
+shannon_mean <- ddply(alpha.frozen, c("Home.nursery","Away.nursery"), summarise, #summarize cell counts
+                 N    = length(diversity_shannon[!is.na(diversity_shannon)]), #calculate the length of the data frame, excluding NA’s
+                 mean = mean(diversity_shannon, na.rm=TRUE), #calculate mean of response variable, removing NA's
+                 sd   = sd(diversity_shannon, na.rm=TRUE), #calculate standard deviation
+                 se   = sd / sqrt(N), #calculate standard error
+                 max = max(diversity_shannon, na.rm=TRUE) #calculate max, could also calculate min () if desired
+);shannon_mean
+
+shannon_plot<-ggplot(data=shannon_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = F)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab("") + #Label the X Axis
+    ylab("Shannon") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Shannon Diversity"))) +
+   ggtitle("Shannon Diversity")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery, nrow=1);shannon_plot
+
+# EVENNESS means
+evenness_mean <- ddply(alpha.frozen, c("Home.nursery","Away.nursery"), summarise, #summarize cell counts
+                 N    = length(evenness_pielou[!is.na(evenness_pielou)]), #calculate the length of the data frame, excluding NA’s
+                 mean = mean(evenness_pielou, na.rm=TRUE), #calculate mean of response variable, removing NA's
+                 sd   = sd(evenness_pielou, na.rm=TRUE), #calculate standard deviation
+                 se   = sd / sqrt(N), #calculate standard error
+                 max = max(evenness_pielou, na.rm=TRUE) #calculate max, could also calculate min () if desired
+);evenness_mean
+
+evenness_plot<-ggplot(data=evenness_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = F)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab("Home Nursery") + #Label the X Axis
+    ylab("Evenness") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Evenness"))) +
+   ggtitle("Evenness")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery, nrow = 1);evenness_plot
+
+#plot all together
+grid.arrange( observed_plot, shannon_plot,evenness_plot, nrow = 3)
+
+
+#Plots by HOME ####
+
+observed_plot<-ggplot(data=observed_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = F)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab(" ") + #Label the X Axis
+    ylab("Observed") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Richness"))) +
+   ggtitle("Richness")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery, nrow=1);observed_plot
+
+#Shannon
+
+
+shannon_plot<-ggplot(data=shannon_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = F)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab("") + #Label the X Axis
+    ylab("Shannon") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Shannon Diversity"))) +
+   ggtitle("Shannon Diversity")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery, nrow=1);shannon_plot
+
+# EVENNESS 
+
+evenness_plot<-ggplot(data=evenness_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
+                width=0.1, show.legend = F)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
+  xlab("Home Nursery") + #Label the X Axis
+    ylab("Evenness") + #Label the X Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.title=element_text(size=14,face="bold"), #Set axis format
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        text = element_text(size=18),  # set element text
+        plot.background =element_blank(), #Set the plot background
+        legend.key = element_blank()) + #Set plot legend key
+  # theme(panel.grid.major = element_blank(), 
+  #       panel.grid.minor = element_blank(),
+  #       panel.background = element_rect(colour = "black", size=1))+
+        theme(aspect.ratio=1)+
+   ylab(expression(paste("Evenness"))) +
+   ggtitle("Evenness")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(size=20, face = "italic"))+
+  facet_wrap(~Away.nursery, nrow = 1);evenness_plot
+
+#plot all together
+grid.arrange( observed_plot, shannon_plot,evenness_plot, nrow = 3)
+
+
+```
+
+```{r}
 #regular box  
 #evenness
   aov.evenness.species = aov(evenness_pielou ~ tag.id, data=alpha)
@@ -392,7 +747,7 @@ grid.arrange( observed_plot, evenness_pielou_plot,shannon_plot, nrow = 1)
   TukeyHSD(aov.evenness.species)  
 
   #Plot
-  boxplot(diversity_shannon ~ location, data=alpha, ylab="Shannon's diversity") 
+  boxplot(diversity_observed ~ location, data=alpha, ylab="observed's diversity") 
   boxplot(observed ~ location, data=alpha, ylab="Observed") 
   boxplot(evenness_pielou ~ location, data=alpha, ylab="Evenness_pielou") 
 
@@ -413,15 +768,15 @@ p1 <- ggviolin(alpha, x = "location", y = "observed",
    add = "boxplot", fill = "location") 
   print(p1)
 
-  #Shannon
-p1 <- ggviolin(alpha, x = "location", y = "diversity_shannon",
+  #observed
+p1 <- ggviolin(alpha, x = "location", y = "diversity_observed",
    add = "boxplot", fill = "location") 
   print(p1)
   
 p1 <- p1 + stat_compare_means(comparisons = "tag.id") #non-parametric test (Wilcoxon test)
   print(p1)
   
-p1 <- ggviolin(alpha, x = "tag.id", y = "diversity_shannon",
+p1 <- ggviolin(alpha, x = "tag.id", y = "diversity_observed",
    add = "boxplot", fill = "location") 
   print(p1)
   
