@@ -41,13 +41,24 @@ library(knitr)
 
 #Start analysis here: load in RData if needed
 ```{r}
-load("/Users/shaylematsuda/Desktop/Projects/GenoSwap/Genotype_swap/data/RData/Bac.seq_phyloseq2500.RData") #load cleaned data 
+load("data/RData/Bac.seq_phyloseq2500new.RData") #load cleaned data 
 
-#remove dups Acer67. Acer67b, Acer272
+#Remove Samples identified below in QC
+#remove dups Acer67. Acer67b, Acer272, Acer111, Acer115. Aver68b
+#remove Acer 107, Acer 43 no meta
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67")
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer67b")
 Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer272")
- 
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer43") #no meta
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer129") #unreliable meta
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer134")#unreliable meta
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer111")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer175")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer68b")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer107")
+Bac.seq <- subset_samples(Bac.seq, sample_name != "Acer34")
+
+
 ```
 
 QC data - do not have to run each time, used to figure out cut offs and look at raw data
@@ -82,7 +93,10 @@ dups<-subset_samples(Bac.seq, duplicates=="dup")
 TopNOTUsB = names(sort(taxa_sums(dups), TRUE)[1:200]) #pull top ASVs
 bac50 = prune_taxa(TopNOTUsB, dups)
 bacBarPlot<-plot_bar(bac50,  fill="Phylum") +
-  facet_wrap("frag.id");bacBarPlot #genets_H_A where decisions need to be made: 20 (3, tube 67, 67b, 67c), ML4 (2, Acer272, 272b): Keep Acer 272b and Acer 67c highest read counts
+  facet_wrap("frag.id");bacBarPlot 
+      #genets_H_A where decisions need to be made: 20 (3, tube 67, 67b, 67c), ML4 (2,             Acer272, 272b): 
+    #Keep Acer 272b, Acer 67c, Acer 122, Acer175, Acer68c - highest read counts in run. 
+    
 
 
 
@@ -173,8 +187,6 @@ Bac.seq.c<-subset_samples(Bac.seq, type=="sample") #subset only coral
 Bac.seq.c = prune_taxa(taxa_sums(Bac.seq.c) > 0, Bac.seq.c) #this removes any OTU with 0s
 Bac.seq.c.sd <- as(sample_data(Bac.seq.c), "data.frame") #sample df
 
-
-
 #Frozen
 Bac.seq.c.frozen<-subset_samples(Bac.seq, Swap=="Frozen") #subset only coral
 Bac.seq.c.frozen = prune_taxa(taxa_sums(Bac.seq.c.frozen) > 0, Bac.seq.c.frozen) #this removes any OTU with 0s
@@ -190,15 +202,6 @@ Bac.seq.c.sd.fresh <- as(sample_data(Bac.seq.c.fresh), "data.frame") #sample df
 
 ```{r}
 
-sample_sums(Bac.seq.c)
-#view otu
-# Extract abundance matrix from the phyloseq object
-OTU1 = as(otu_table(Bac.seq.c), "matrix")
-# transpose if necessary
-if(taxa_are_rows(Bac.seq.c)){OTU1 <- t(OTU1)}
-# Coerce to data.frame
-OTUdf = as.data.frame(OTU1)#@write.csv(OTUdf,"OTUdf.csv")
-
 # pull out: observed, diversity_shannon, evenness_pielou
 erich.tab.obs <-microbiome::alpha(Bac.seq.c, index = "observed") 
   erich.tab.obs$frag.id <- as.factor(Bac.seq.c.sd$frag.id)
@@ -209,36 +212,27 @@ erich.tab.even <-microbiome::alpha(Bac.seq.c, index = "evenness_pielou")
 
 alpha<-merge(erich.tab.obs, erich.tab.even, by.all="frag.id")
 alpha<-merge(alpha, erich.tab.shan, by="frag.id")
-write.csv(erich.tab.obs, "erich.tab.obs.csv")
-    alpha$genet.ID <- as.factor(Bac.seq.c.sd$genet.ID)
-    alpha$Home.nursery <- as.factor(Bac.seq.c.sd$Home.nursery)
-    alpha$Away.nursery <- as.factor(Bac.seq.c.sd$Away.nursery)
-    alpha$Swap <- as.factor(Bac.seq.c.sd$Swap)
- 
-
-
-
+#write.csv(erich.tab.obs, "erich.tab.obs.csv")
+#add meta
+alpha<-merge(alpha, Bac.seq.c.sd, by.x="frag.id")
 
 #ANOVAS
 #shannon ####
-  hist(erich.tab2$diversity_shannon)
-
+  hist(alpha$diversity_shannon)
   set.seed(30)
-  aov.shannon.species = aov(diversity_shannon ~ tag.id*location*Prop.D, data=erich.tab2)
-    summary(aov.shannon.species) # only location sig
-  set.seed(30)
-    aov.shannon.species = aov(diversity_shannon ~ date, data=erich.tab2) 
-  summary(aov.shannon.species) #date doesn't matter
-  
-   aov.shannon.species = aov(diversity_shannon ~ location, data=erich.tab2) #run for posthoc
-  summary(aov.shannon.species) # <0.001
-  TukeyHSD(aov.shannon.species)# surprise, branch tips sig differ from all other locations
-
-    #look at residuals
-    car::qqPlot(residuals(aov.shannon.species))
-    car::leveneTest(residuals(aov.shannon.species)~location, data=erich.tab2) #passes
+  aov.shannon = aov(diversity_shannon ~ Home.nursery*Away.nursery*genet.ID, data=alpha)
+    summary(aov.shannon) # only Home location matters (p=0.0285)
+  aov.shannon = aov(diversity_shannon ~ Home.nursery, data=alpha) #try only by home
+    summary(aov.shannon) 
+    TukeyHSD(aov.shannon)# nothing significant
+  aov.shannon = aov(diversity_shannon ~ genet.ID, data=alpha) #not significant
+    summary(aov.shannon) 
     
-  shannon_mean <- ddply(erich.tab2, c("location"), summarise, #summarize cell counts
+    #look at residuals - nor running
+   # car::qqPlot(residuals(aov.shannon))
+    #car::leveneTest(residuals(aov.shannon)~Home.nursery, data=alpha) #not
+    
+  shannon_mean <- ddply(alpha, c("Home.nursery"), summarise, #summarize cell counts
                  N    = length(diversity_shannon[!is.na(diversity_shannon)]), #calculate the length of the data frame, excluding NA’s
                  mean = mean(diversity_shannon, na.rm=TRUE), #calculate mean of response variable, removing NA's
                  sd   = sd(diversity_shannon, na.rm=TRUE), #calculate standard deviation
@@ -246,10 +240,10 @@ write.csv(erich.tab.obs, "erich.tab.obs.csv")
                  max = max(diversity_shannon, na.rm=TRUE) #calculate max, could also calculate min () if desired
 );shannon_mean
 
-shannon_plot<-ggplot(data=shannon_mean, aes(x=location, y=mean, color=location)) +
+shannon_plot<-ggplot(data=shannon_mean, aes(x=Home.nursery, y=mean, color=Home.nursery)) +
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se),
                 width=0.1, show.legend = F)+
-  geom_point(aes(color=location), size=4, show.legend = F)+
+  geom_point(aes(color=Home.nursery), size=4, show.legend = F)+
   xlab("") + #Label the X Axis
     ylab("") + #Label the X Axis
   theme_bw() + #Set the background color
@@ -271,29 +265,29 @@ shannon_plot<-ggplot(data=shannon_mean, aes(x=location, y=mean, color=location))
   theme(plot.title = element_text(size=20, face = "italic"));shannon_plot
 
 #observed   ####
-   hist(erich.tab2$observed) #heavily skewed
-  ggqqplot(erich.tab2$observed)
+   hist(alpha$observed) #heavily skewed
+  ggqqplot(alpha$observed)
   
-  erich.tab2$observed_log<-log10(erich.tab2$observed)
-  hist(erich.tab2$observed_log) #good
+  alpha$observed_log<-log10(alpha$observed)
+  hist(alpha$observed_log) #good
   
   set.seed(30)
-    aov.observed.species = aov(observed_log ~ tag.id*location*Prop.D, data=erich.tab2)
+    aov.observed.species = aov(observed_log ~ tag.id*location*Prop.D, data=alpha)
       summary(aov.observed.species) # only location sig
   
   set.seed(30)
-   aov.observed.species = aov(observed_log ~ date, data=erich.tab2)
+   aov.observed.species = aov(observed_log ~ date, data=alpha)
     summary(aov.observed.species) #date not important
   
   set.seed(30) #run for tukey
-   aov.observed.species = aov(observed ~ location, data=erich.tab2)
+   aov.observed.species = aov(observed ~ location, data=alpha)
     summary(aov.observed.species) #sig
     
   TukeyHSD(aov.observed.species)# surprise, branch tips sig differ from all other locations
     car::qqPlot(residuals(aov.observed.species))
-    car::leveneTest(residuals(aov.observed.species)~location, data=erich.tab2) #passes
+    car::leveneTest(residuals(aov.observed.species)~location, data=alpha) #passes
 
-  observed_mean <- ddply(erich.tab2, c("location"), summarise, #summarize cell counts
+  observed_mean <- ddply(alpha, c("location"), summarise, #summarize cell counts
                  N    = length(observed[!is.na(observed)]), #calculate the length of the data frame, excluding NA’s
                  mean = mean(observed, na.rm=TRUE), #calculate mean of response variable, removing NA's
                  sd   = sd(observed, na.rm=TRUE), #calculate standard deviation
@@ -327,34 +321,34 @@ observed_plot<-ggplot(data=observed_mean, aes(x=location, y=mean, color=location
  
  #evenness ####
 
- hist(erich.tab2$evenness_pielou)
-  ggqqplot(erich.tab2$evenness_pielou)
-   hist(erich.tab2$evenness_pielou_log10)#hist of data looks best of all transformations but not great. 
+ hist(alpha$evenness_pielou)
+  ggqqplot(alpha$evenness_pielou)
+   hist(alpha$evenness_pielou_log10)#hist of data looks best of all transformations but not great. 
 
   set.seed(30)
-    aov.evenness_pielou.species = aov(evenness_pielou ~ tag.id*location*Prop.D, data=erich.tab2)
+    aov.evenness_pielou.species = aov(evenness_pielou ~ tag.id*location*Prop.D, data=alpha)
       summary(aov.evenness_pielou.species) # Tag ID and location significant
   
     car::qqPlot(residuals(aov.evenness_pielou.species))
-    car::leveneTest(residuals(aov.evenness_pielou.species)~location, data=erich.tab2) #fails
+    car::leveneTest(residuals(aov.evenness_pielou.species)~location, data=alpha) #fails
 
     #transformed data also fails, stick with original data (sqrt fails, log fails, in fails, arcsqrt fails)
     
-  aov.evenness_pielou.species = aov(evenness_pielou ~ date, data=erich.tab2)
+  aov.evenness_pielou.species = aov(evenness_pielou ~ date, data=alpha)
   summary(aov.evenness_pielou.species) #not sig
   
-  aov.evenness_pielou.species = aov(evenness_pielou ~ location, data=erich.tab2)
+  aov.evenness_pielou.species = aov(evenness_pielou ~ location, data=alpha)
   summary(aov.evenness_pielou.species) # sig
   TukeyHSD(aov.evenness_pielou.species)#
 
-  aov.evenness_pielou.species = aov(evenness_pielou ~ tag.id, data=erich.tab2)
+  aov.evenness_pielou.species = aov(evenness_pielou ~ tag.id, data=alpha)
   summary(aov.evenness_pielou.species) # p < 0.001
   TukeyHSD(aov.evenness_pielou.species)# 
   
-  aov.evenness_pielou.species = aov(evenness_pielou ~ Prop.D, data=erich.tab2)
+  aov.evenness_pielou.species = aov(evenness_pielou ~ Prop.D, data=alpha)
   summary(aov.evenness_pielou.species) # p =.43
   
-  evenness_pielou_mean <- ddply(erich.tab2, c("location"), summarise, #summarize cell counts
+  evenness_pielou_mean <- ddply(alpha, c("location"), summarise, #summarize cell counts
                  N    = length(evenness_pielou[!is.na(evenness_pielou)]), #calculate the length of the data frame, excluding NA’s
                  mean = mean(evenness_pielou, na.rm=TRUE), #calculate mean of response variable, removing NA's
                  sd   = sd(evenness_pielou, na.rm=TRUE), #calculate standard deviation
@@ -393,46 +387,46 @@ grid.arrange( observed_plot, evenness_pielou_plot,shannon_plot, nrow = 1)
   
 #regular box  
 #evenness
-  aov.evenness.species = aov(evenness_pielou ~ tag.id, data=erich.tab2)
+  aov.evenness.species = aov(evenness_pielou ~ tag.id, data=alpha)
   summary(aov.evenness.species) # sig diff between species
   TukeyHSD(aov.evenness.species)  
 
   #Plot
-  boxplot(diversity_shannon ~ location, data=erich.tab2, ylab="Shannon's diversity") 
-  boxplot(observed ~ location, data=erich.tab2, ylab="Observed") 
-  boxplot(evenness_pielou ~ location, data=erich.tab2, ylab="Evenness_pielou") 
+  boxplot(diversity_shannon ~ location, data=alpha, ylab="Shannon's diversity") 
+  boxplot(observed ~ location, data=alpha, ylab="Observed") 
+  boxplot(evenness_pielou ~ location, data=alpha, ylab="Evenness_pielou") 
 
 #violin plots
   # create a list of pairwise comaprisons
-al.species <- levels(erich.tab2$location) # get the variables
+al.species <- levels(alpha$location) # get the variables
 
 # make a pairwise list that we want to compare.
   al.species.pairs <- combn(seq_along(al.species), 2, simplify = FALSE, FUN = function(i)al.species[i])
   print(al.species.pairs)
 
 #observed
-p1 <- ggviolin(erich.tab2, x = "location", y = "observed",
+p1 <- ggviolin(alpha, x = "location", y = "observed",
    add = "boxplot", fill = "location") 
   print(p1)
 
-    p1 <- ggviolin(erich.tab2, x = "tag.id", y = "observed",
+    p1 <- ggviolin(alpha, x = "tag.id", y = "observed",
    add = "boxplot", fill = "location") 
   print(p1)
 
   #Shannon
-p1 <- ggviolin(erich.tab2, x = "location", y = "diversity_shannon",
+p1 <- ggviolin(alpha, x = "location", y = "diversity_shannon",
    add = "boxplot", fill = "location") 
   print(p1)
   
 p1 <- p1 + stat_compare_means(comparisons = "tag.id") #non-parametric test (Wilcoxon test)
   print(p1)
   
-p1 <- ggviolin(erich.tab2, x = "tag.id", y = "diversity_shannon",
+p1 <- ggviolin(alpha, x = "tag.id", y = "diversity_shannon",
    add = "boxplot", fill = "location") 
   print(p1)
   
 #Evenness
-p1 <- ggviolin(erich.tab2, x = "location", y = "evenness_pielou",
+p1 <- ggviolin(alpha, x = "location", y = "evenness_pielou",
    add = "boxplot", fill = "location") 
   print(p1)
   

@@ -122,7 +122,7 @@ Acer245,245,sample,,Acer,Frozen,2
 Acer98,98,sample,,Acer,Frozen,2
 Acer106,106,sample,,Acer,Frozen,2
 Acer114,114,sample,,Acer,Frozen,2
-Acer122,122,sample,,Acer,Frozen,2
+Acer122,122,sample,dup,Acer,Frozen,2
 Acer130,130,sample,,Acer,Frozen,2
 Acer138,138,sample,,Acer,Frozen,2
 Acer146,146,sample,,Acer,Frozen,2
@@ -133,7 +133,7 @@ Acer270,270,sample,,Acer,Frozen,2
 Acer246,246,sample,,Acer,Frozen,2
 Acer99,99,sample,,Acer,Frozen,2
 Acer107,107,sample,,Acer,Frozen,2
-Acer115,115,sample,,Acer,Frozen,2
+Acer115,115,sample,dup,Acer,Frozen,2
 Acer123,123,sample,,Acer,Frozen,2
 Acer131,131,sample,,Acer,Frozen,2
 Acer139,139,sample,,Acer,Frozen,2
@@ -180,7 +180,7 @@ Acer277,277,sample,,Acer,Frozen,2
 Acer274,274,sample,,Acer,Frozen,2
 Acer250,250,sample,,Acer,Frozen,2
 Acer103,103,sample,,Acer,Frozen,2
-Acer111,111,sample,,Acer,Frozen,2
+Acer111,111,sample,dup,Acer,Frozen,2
 Acer119,119,sample,,Acer,Frozen,2
 Acer127,127,sample,,Acer,Frozen,2
 Acer135,135,sample,,Acer,Frozen,2
@@ -202,7 +202,7 @@ Acer171,171,sample,,Acer,Frozen,3
 Acer172,172,sample,,Acer,Frozen,3
 Acer173,173,sample,,Acer,Frozen,3
 Acer174,174,sample,,Acer,Frozen,3
-Acer175,175,sample,,Acer,Frozen,3
+Acer175,175,sample,dup,Acer,Frozen,3
 Acer176,176,sample,,Acer,Frozen,3
 Acer177,177,sample,,Acer,Frozen,3
 Acer178,178,sample,,Acer,Frozen,3
@@ -287,7 +287,7 @@ Acer264,264,sample,,Acer,Frozen,3
 Acer265,265,sample,,Acer,Frozen,3
 Acer266,266,sample,,Acer,Frozen,3
 Acer267,267,sample,,Acer,Frozen,3
-Acer68b,68,sample,,Acer,Frozen,4
+Acer68b,68,sample,dup,Acer,Frozen,4
 AcerNTCP4a,NTCP4a,NTC,,Acer,,4
 AcerMOCKP4,MOCKP4,Mock,,Acer,,4
 Acer163b,163,sample,dup,Acer,Frozen,4
