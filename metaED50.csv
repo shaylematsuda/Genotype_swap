@@ -1,0 +1,404 @@
+genet.ID,Away.nursery,Home.nursery,tube.id,sample_name,type,duplicates,species,Swap,PCRplate,Other.name,Collection.Site,Latitude,Longitude,Collected.by,Collection.date,Collection.permit,frag.id,ed50
+1,CRF,NSU,209,Acer209,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.21089935,-80.08580017,NSU,4/29/10,SAL-10-1086A-SCRP,1 NSU CRF Frozen,36.02999848
+1,Mote,NSU,42,Acer42,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.21089935,-80.08580017,NSU,4/29/10,SAL-10-1086A-SCRP,1 NSU Mote Frozen,36.19624508
+1,NSU,NSU,192,Acer192,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.21089935,-80.08580017,NSU,4/29/10,SAL-10-1086A-SCRP,1 NSU NSU Frozen,36.47085755
+1,UM,NSU,153,Acer153,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.21089935,-80.08580017,NSU,4/29/10,SAL-10-1086A-SCRP,1 NSU UM Frozen,36.50031542
+2,NSU,NSU,189,Acer189,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.19059944,-80.08760071,NSU,4/29/10,SAL-10-1086A-SCRP,2 NSU NSU Frozen,36.17573545
+2,CRF,NSU,226,Acer226,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.19059944,-80.08760071,NSU,4/29/10,SAL-10-1086A-SCRP,2 NSU CRF Frozen,36.21528889
+2,UM,NSU,136,Acer136,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.19059944,-80.08760071,NSU,4/29/10,SAL-10-1086A-SCRP,2 NSU UM Frozen,36.8128623
+4,Mote,NSU,93,Acer93,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.15810013,-80.09059906,NSU,4/28/10,SAL-10-1086A-SCRP,4 NSU Mote Frozen,35.71726184
+4,Mote,NSU,558,Acer558,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.15810013,-80.09059906,NSU,4/28/10,SAL-10-1086A-SCRP,4 NSU Mote Fresh,35.71726184
+4,CRF,NSU,248,Acer248,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.15810013,-80.09059906,NSU,4/28/10,SAL-10-1086A-SCRP,4 NSU CRF Frozen,35.85944916
+4,CRF,NSU,515,Acer515,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.15810013,-80.09059906,NSU,4/28/10,SAL-10-1086A-SCRP,4 NSU CRF Fresh,35.85944916
+4,NSU,NSU,204,Acer204,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.15810013,-80.09059906,NSU,4/28/10,SAL-10-1086A-SCRP,4 NSU NSU Frozen,36.13214637
+4,UM,NSU,148,Acer148,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.15810013,-80.09059906,NSU,4/28/10,SAL-10-1086A-SCRP,4 NSU UM Frozen,36.15546406
+4,UM,NSU,369,Acer369,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.15810013,-80.09059906,NSU,4/28/10,SAL-10-1086A-SCRP,4 NSU UM Fresh,36.15546406
+5,CRF,NSU,224,Acer224,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.15629959,-80.09049988,NSU,4/28/10,SAL-10-1086A-SCRP,5 NSU CRF Frozen,36.30734247
+5,NSU,NSU,181,Acer181,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.15629959,-80.09049988,NSU,4/28/10,SAL-10-1086A-SCRP,5 NSU NSU Frozen,36.40122733
+5,UM,NSU,115,Acer115,sample,dup,Acer,Frozen,2,n/a,Nearshore Broward County,26.15629959,-80.09049988,NSU,4/28/10,SAL-10-1086A-SCRP,5 NSU UM Frozen,36.63062434
+5,UM,NSU,175,Acer175,sample,dup,Acer,Frozen,3,n/a,Nearshore Broward County,26.15629959,-80.09049988,NSU,4/28/10,SAL-10-1086A-SCRP,5 NSU UM Frozen,36.63062434
+6,CRF,NSU,258,Acer258,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.14150047,-80.09770203,NSU,4/28/10,SAL-10-1086A-SCRP,6 NSU CRF Frozen,36.17751548
+6,NSU,NSU,199,Acer199,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.14150047,-80.09770203,NSU,4/28/10,SAL-10-1086A-SCRP,6 NSU NSU Frozen,36.23337955
+6,UM,NSU,165,Acer165,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.14150047,-80.09770203,NSU,4/28/10,SAL-10-1086A-SCRP,6 NSU UM Frozen,36.43062776
+7,CRF,NSU,252,Acer252,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.13640022,-80.0931015,NSU,4/27/10,SAL-10-1086A-SCRP,7 NSU CRF Frozen,35.96036937
+7,NSU,NSU,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.43853304
+7,UM,NSU,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.74789866
+8,CRF,NSU,222,Acer222R,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.13279915,-80.09429932,NSU,4/27/10,SAL-10-1086A-SCRP,8 NSU CRF Fresh,36.16783892
+8,CRF,NSU,250,Acer250,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.13279915,-80.09429932,NSU,4/27/10,SAL-10-1086A-SCRP,8 NSU CRF Frozen,36.16783892
+8,NSU,NSU,205,Acer205,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.13279915,-80.09429932,NSU,4/27/10,SAL-10-1086A-SCRP,8 NSU NSU Frozen,36.58411872
+8,UM,NSU,367,Acer367,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.13279915,-80.09429932,NSU,4/27/10,SAL-10-1086A-SCRP,8 NSU UM Fresh,36.67588583
+8,UM,NSU,152,Acer152,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.13279915,-80.09429932,NSU,4/27/10,SAL-10-1086A-SCRP,8 NSU UM Frozen,36.67588583
+8,Mote,NSU,557,Acer557,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.13279915,-80.09429932,NSU,4/27/10,SAL-10-1086A-SCRP,8 NSU Mote Fresh,NA
+8,Mote,NSU,46,Acer46,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.13279915,-80.09429932,NSU,4/27/10,SAL-10-1086A-SCRP,8 NSU Mote Frozen,NA
+13,CRF,NSU,508,Acer508,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.14940071,-80.0970993,NSU,4/28/10,SAL-10-1086A-SCRP,13 NSU CRF Fresh,36.16783892
+13,CRF,NSU,249,Acer249,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.14940071,-80.0970993,NSU,4/28/10,SAL-10-1086A-SCRP,13 NSU CRF Frozen,36.16783892
+13,Mote,NSU,556,Acer556,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.14940071,-80.0970993,NSU,4/28/10,SAL-10-1086A-SCRP,13 NSU Mote Fresh,36.22768649
+13,Mote,NSU,62,Acer62,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.14940071,-80.0970993,NSU,4/28/10,SAL-10-1086A-SCRP,13 NSU Mote Frozen,36.22768649
+13,NSU,NSU,185,Acer185,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.14940071,-80.0970993,NSU,4/28/10,SAL-10-1086A-SCRP,13 NSU NSU Frozen,36.58411872
+13,UM,NSU,163,Acer163b,sample,dup,Acer,Frozen,4,n/a,Nearshore Broward County,26.14940071,-80.0970993,NSU,4/28/10,SAL-10-1086A-SCRP,13 NSU UM Frozen,36.67588583
+13,UM,NSU,350,Acer350,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.14940071,-80.0970993,NSU,4/28/10,SAL-10-1086A-SCRP,13 NSU UM Fresh,36.67588583
+14,CRF,NSU,223,Acer223R,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.07600021,-80.10430145,NSU,4/28/10,SAL-10-1086A-SCRP,14 NSU CRF Fresh,NA
+14,Mote,NSU,555,Acer555,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.07600021,-80.10430145,NSU,4/28/10,SAL-10-1086A-SCRP,14 NSU Mote Fresh,NA
+14,Mote,NSU,51,Acer51,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.07600021,-80.10430145,NSU,4/28/10,SAL-10-1086A-SCRP,14 NSU Mote Frozen,NA
+14,UM,NSU,372,Acer372,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.07600021,-80.10430145,NSU,4/28/10,SAL-10-1086A-SCRP,14 NSU UM Fresh,NA
+14,UM,NSU,111,Acer111,sample,dup,Acer,Frozen,2,n/a,Nearshore Broward County,26.07600021,-80.10430145,NSU,4/28/10,SAL-10-1086A-SCRP,14 NSU UM Frozen,NA
+14,UM,NSU,122,Acer122,sample,dup,Acer,Frozen,2,n/a,Nearshore Broward County,26.07600021,-80.10430145,NSU,4/28/10,SAL-10-1086A-SCRP,14 NSU UM Frozen,NA
+15,Mote,NSU,74,Acer74,sample,dup,Acer,Frozen,1,n/a,Nearshore Broward County,26.06870079,-80.10430145,NSU,4/27/10,SAL-10-1086A-SCRP,15 NSU Mote Frozen,36.03231043
+15,Mote,NSU,554,Acer554,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.06870079,-80.10430145,NSU,4/27/10,SAL-10-1086A-SCRP,15 NSU Mote Fresh,36.03231043
+15,Mote,NSU,74,Acer74b,sample,dup,Acer,Frozen,4,n/a,Nearshore Broward County,26.06870079,-80.10430145,NSU,4/27/10,SAL-10-1086A-SCRP,15 NSU Mote Frozen,36.03231043
+15,CRF,NSU,260,Acer260,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.06870079,-80.10430145,NSU,4/27/10,SAL-10-1086A-SCRP,15 NSU CRF Frozen,36.06277072
+15,CRF,NSU,416,Acer416,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.06870079,-80.10430145,NSU,4/27/10,SAL-10-1086A-SCRP,15 NSU CRF Fresh,36.06277072
+15,NSU,NSU,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.27212731
+15,UM,NSU,132,Acer132,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.06870079,-80.10430145,NSU,4/27/10,SAL-10-1086A-SCRP,15 NSU UM Frozen,36.81558327
+15,UM,NSU,340,Acer340,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.06870079,-80.10430145,NSU,4/27/10,SAL-10-1086A-SCRP,15 NSU UM Fresh,36.81558327
+20,Mote,NSU,67,Acer67c,sample,dup,Acer,Frozen,4,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU Mote Frozen,36.21104915
+20,Mote,NSU,67,Acer67,sample,dup,Acer,Frozen,1,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU Mote Frozen,36.21104915
+20,Mote,NSU,67,Acer67b,sample,dup,Acer,Frozen,4,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU Mote Frozen,36.21104915
+20,Mote,NSU,553,Acer553,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU Mote Fresh,36.21104915
+20,CRF,NSU,238,Acer238,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU CRF Frozen,36.22388464
+20,CRF,NSU,419,Acer419,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU CRF Fresh,36.22388464
+20,UM,NSU,170,Acer170,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU UM Frozen,36.41168759
+20,UM,NSU,370,Acer370,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,25.99970055,-80.10800171,NSU,4/27/10,SAL-10-1086A-SCRP,20 NSU UM Fresh,36.41168759
+20,NSU,NSU,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.63920401
+2a,CRF,NSU,215,Acer215R,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.14780045,-80.09660339,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,2a NSU CRF Fresh,35.96068749
+2a,CRF,NSU,222,Acer222,sample,dup,Acer,Frozen,3,n/a,Nearshore Broward County,26.14780045,-80.09660339,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,2a NSU CRF Frozen,35.96068749
+2a,Mote,NSU,63,Acer63,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.14780045,-80.09660339,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,2a NSU Mote Frozen,35.98928162
+2a,Mote,NSU,559,Acer559,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.14780045,-80.09660339,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,2a NSU Mote Fresh,35.98928162
+2a,NSU,NSU,184,Acer184,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.14780045,-80.09660339,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,2a NSU NSU Frozen,36.05739839
+2a,UM,NSU,156,Acer156,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.14780045,-80.09660339,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,2a NSU UM Frozen,36.53312743
+2a,UM,NSU,362,Acer362,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.14780045,-80.09660339,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,2a NSU UM Fresh,36.53312743
+3a,CRF,NSU,267,Acer267,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.2227993,-80.08439636,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,3a NSU CRF Frozen,NA
+3a,UM,NSU,124,Acer124,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.2227993,-80.08439636,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,3a NSU UM Frozen,NA
+4a,UM,NSU,149,Acer149,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.16729927,-80.09030151,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,4a NSU UM Frozen,36.03747969
+4a,UM,NSU,345,Acer345,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.16729927,-80.09030151,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,4a NSU UM Fresh,36.03747969
+4a,CRF,NSU,218,Acer218,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.16729927,-80.09030151,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,4a NSU CRF Frozen,36.07180388
+4a,CRF,NSU,415,Acer415,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.16729927,-80.09030151,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,4a NSU CRF Fresh,36.07180388
+4a,NSU,NSU,206,Acer206,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.16729927,-80.09030151,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,4a NSU NSU Frozen,36.14137013
+4a,Mote,NSU,576,Acer576,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.16729927,-80.09030151,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,4a NSU Mote Fresh,NA
+4a,Mote,NSU,104,Acer104,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.16729927,-80.09030151,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,4a NSU Mote Frozen,NA
+5a,CRF,NSU,208,Acer208,sample,dup,Acer,Frozen,3,n/a,Nearshore Broward County,26.16320038,-80.09049988,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,5a NSU CRF Frozen,36.02999848
+5a,CRF,NSU,234,Acer234R,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.16320038,-80.09049988,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,5a NSU CRF Fresh,36.02999848
+5a,Mote,NSU,575,Acer575,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.16320038,-80.09049988,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,5a NSU Mote Fresh,36.19624508
+5a,Mote,NSU,84,Acer84,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.16320038,-80.09049988,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,5a NSU Mote Frozen,36.19624508
+5a,NSU,NSU,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.47085755
+5a,UM,NSU,373,Acer373,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.16320038,-80.09049988,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,5a NSU UM Fresh,36.50031542
+5a,UM,NSU,116,Acer116,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.16320038,-80.09049988,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,5a NSU UM Frozen,36.50031542
+6a,Mote,NSU,78,Acer78,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.1067009,-80.09670258,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,6a NSU Mote Frozen,35.68130459
+6a,Mote,NSU,572,Acer572,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.1067009,-80.09670258,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,6a NSU Mote Fresh,35.68130459
+6a,UM,NSU,346,Acer346,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.1067009,-80.09670258,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,6a NSU UM Fresh,36.03747969
+6a,UM,NSU,155,Acer155,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.1067009,-80.09670258,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,6a NSU UM Frozen,36.03747969
+6a,CRF,NSU,506,Acer506,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.1067009,-80.09670258,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,6a NSU CRF Fresh,36.07180388
+6a,CRF,NSU,246,Acer246,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.1067009,-80.09670258,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,6a NSU CRF Frozen,36.07180388
+6a,NSU,NSU,200,Acer200,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.1067009,-80.09670258,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,6a NSU NSU Frozen,36.14137013
+8a,CRF,NSU,229,Acer229,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU CRF Frozen,35.54038854
+8a,CRF,NSU,235,Acer235R,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU CRF Fresh,35.54038854
+8a,Mote,NSU,71,Acer71,sample,dup,Acer,Frozen,1,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU Mote Frozen,35.73214464
+8a,Mote,NSU,565,Acer565,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU Mote Fresh,35.73214464
+8a,Mote,NSU,71,Acer71b,sample,dup,Acer,Frozen,4,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU Mote Frozen,35.73214464
+8a,UM,NSU,339,Acer339,sample,,Acer,Fresh,4,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU UM Fresh,36.05869427
+8a,UM,NSU,164,Acer164,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU UM Frozen,36.05869427
+8a,NSU,NSU,203,Acer203,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.05719948,-80.10559845,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,8a NSU NSU Frozen,36.32484255
+9a,NSU,NSU,198,Acer198,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.02490044,-80.10420227,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,9a NSU NSU Frozen,35.8916934
+9a,CRF,NSU,276,Acer276,sample,,Acer,Frozen,2,n/a,Nearshore Broward County,26.02490044,-80.10420227,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,9a NSU CRF Frozen,35.94848881
+9a,Mote,NSU,35,Acer35,sample,,Acer,Frozen,1,n/a,Nearshore Broward County,26.02490044,-80.10420227,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,9a NSU Mote Frozen,36.27873867
+9a,UM,NSU,179,Acer179,sample,,Acer,Frozen,3,n/a,Nearshore Broward County,26.02490044,-80.10420227,NSU,Sept to Dec 2007,SAL-10-1086A-SCRP,9a NSU UM Frozen,36.60956074
+Acer001,Mote,CRF,584,Acer584,sample,,Acer,Fresh,4,Acer1,White Bank North,25.20000076,-80.22000122,CRF,6/22/18,FKNMS-2011-159-A4,Acer001 CRF Mote Fresh,36.18983444
+Acer001,Mote,CRF,66,Acer66,sample,,Acer,Frozen,1,Acer1,White Bank North,25.20000076,-80.22000122,CRF,6/22/18,FKNMS-2011-159-A4,Acer001 CRF Mote Frozen,36.18983444
+Acer001,CRF,CRF,225,Acer225R,sample,,Acer,Fresh,4,Acer1,White Bank North,25.20000076,-80.22000122,CRF,6/22/18,FKNMS-2011-159-A4,Acer001 CRF CRF Fresh,36.25524708
+Acer001,CRF,CRF,257,Acer257,sample,,Acer,Frozen,3,Acer1,White Bank North,25.20000076,-80.22000122,CRF,6/22/18,FKNMS-2011-159-A4,Acer001 CRF CRF Frozen,36.25524708
+Acer001,UM,CRF,366,Acer366,sample,,Acer,Fresh,4,Acer1,White Bank North,25.20000076,-80.22000122,CRF,6/22/18,FKNMS-2011-159-A4,Acer001 CRF UM Fresh,NA
+Acer002,FWC,CRF,22,Acer22,sample,,Acer,Frozen,1,Acer2,White Bank North,25.20000076,-80.22000122,CRF,6/22/18,FKNMS-2011-159-A4,Acer002 CRF FWC Frozen,NA
+Acer002,Mote,CRF,103,Acer103,sample,,Acer,Frozen,2,Acer2,White Bank North,25.20000076,-80.22000122,CRF,6/22/18,FKNMS-2011-159-A4,Acer002 CRF Mote Frozen,NA
+Acer014,FWC,CRF,32,Acer32,sample,,Acer,Frozen,1,u9,Patch Reef Near Davis Reef,24.55999947,-80.29000092,CRF,1/13/06,TNC FRRP Permit,Acer014 CRF FWC Frozen,35.55866293
+Acer014,CRF,CRF,230,Acer230,sample,,Acer,Frozen,3,u9,Patch Reef Near Davis Reef,24.55999947,-80.29000092,CRF,1/13/06,TNC FRRP Permit,Acer014 CRF CRF Frozen,35.95608523
+Acer014,NSU,CRF,201,Acer201,sample,,Acer,Frozen,3,u9,Patch Reef Near Davis Reef,24.55999947,-80.29000092,CRF,1/13/06,TNC FRRP Permit,Acer014 CRF NSU Frozen,35.96736622
+Acer014,Mote,CRF,36,Acer36,sample,,Acer,Frozen,1,u9,Patch Reef Near Davis Reef,24.55999947,-80.29000092,CRF,1/13/06,TNC FRRP Permit,Acer014 CRF Mote Frozen,NA
+Acer022,Mote,CRF,97,Acer97,sample,,Acer,Frozen,2,B9,Broward County,26.03000069,-80.05999756,NSU,12/4/07,Get from NOVA,Acer022 CRF Mote Frozen,NA
+Acer030,CRF,CRF,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,34.98516951
+Acer030,Mote,CRF,82,Acer82,sample,,Acer,Frozen,1,M3,East Turtle Shoal off Grassy Key,24.42000008,-80.55999756,CRF,4/24/08,FKNMS-2008-006,Acer030 CRF Mote Frozen,35.62057238
+Acer041,CRF,CRF,265,Acer265,sample,,Acer,Frozen,3,u34,Patch Reef just off Triangle Marker off Tavernier,25,-80.26999664,CRF,11/21/08,FKNMS-2008-006,Acer041 CRF CRF Frozen,35.56807564
+Acer041,Mote,CRF,60,Acer60,sample,,Acer,Frozen,1,u34,Patch Reef just off Triangle Marker off Tavernier,25,-80.26999664,CRF,11/21/08,FKNMS-2008-006,Acer041 CRF Mote Frozen,35.78962807
+Acer046,FWC,CRF,28,Acer28,sample,,Acer,Frozen,1,M7,Jeff's Patch,24.69766998,-80.95809937,FWC,3/18/10,FKNMS-2015-129-A2,Acer046 CRF FWC Frozen,NA
+Acer049,CRF,CRF,275,Acer275,sample,,Acer,Frozen,2,u38,Pickles Rubble Zone,24.59000015,-80.25,CRF,5/7/10,FKNMS-2008-006,Acer049 CRF CRF Frozen,35.88664842
+Acer049,Mote,CRF,8,Acer8,sample,,Acer,Frozen,1,u38,Pickles Rubble Zone,24.59000015,-80.25,CRF,5/7/10,FKNMS-2008-006,Acer049 CRF Mote Frozen,36.10820359
+Acer057,CRF,CRF,217,Acer217R,sample,,Acer,Fresh,4,M8,Jeff's Patch,24.40999985,-80.56999969,FWC,Get from FWC,,Acer057 CRF CRF Fresh,NA
+Acer057,FWC,CRF,18,Acer18,sample,,Acer,Frozen,1,M8,Jeff's Patch,24.40999985,-80.56999969,FWC,Get from FWC,,Acer057 CRF FWC Frozen,NA
+Acer057,Mote,CRF,607,Acer607,sample,,Acer,Fresh,4,M8,Jeff's Patch,24.40999985,-80.56999969,FWC,Get from FWC,,Acer057 CRF Mote Fresh,NA
+Acer057,Mote,CRF,57,Acer57,sample,,Acer,Frozen,1,M8,Jeff's Patch,24.40999985,-80.56999969,FWC,Get from FWC,,Acer057 CRF Mote Frozen,NA
+Acer057,NSU,CRF,188,Acer188,sample,,Acer,Frozen,3,M8,Jeff's Patch,24.40999985,-80.56999969,FWC,Get from FWC,,Acer057 CRF NSU Frozen,NA
+Acer057,UM,CRF,128,Acer128,sample,,Acer,Frozen,2,M8,Jeff's Patch,24.40999985,-80.56999969,FWC,Get from FWC,,Acer057 CRF UM Frozen,NA
+Acer057,UM,CRF,356,Acer356,sample,,Acer,Fresh,4,M8,Jeff's Patch,24.40999985,-80.56999969,FWC,Get from FWC,,Acer057 CRF UM Fresh,NA
+Acer060,Mote,CRF,40,Acer40,sample,,Acer,Frozen,1,u17,Patch Reef inside Molasses Trench area,25,-80.25,CRF,4/1/10,FKNMS-2011-150,Acer060 CRF Mote Frozen,36.08119991
+Acer060,CRF,CRF,245,Acer245,sample,,Acer,Frozen,2,u17,Patch Reef inside Molasses Trench area,25,-80.25,CRF,4/1/10,FKNMS-2011-150,Acer060 CRF CRF Frozen,36.22973893
+Acer061,CRF,CRF,264,Acer264,sample,,Acer,Frozen,3,u21,Patch Reef inside Molasses Trench area,25,-80.25,CRF,4/1/10,FKNMS-2011-150,Acer061 CRF CRF Frozen,35.63644903
+Acer061,NSU,CRF,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.07601391
+Acer061,Mote,CRF,70,Acer70b,sample,dup,Acer,Frozen,4,u21,Patch Reef inside Molasses Trench area,25,-80.25,CRF,4/1/10,FKNMS-2011-150,Acer061 CRF Mote Frozen,36.1787595
+Acer061,Mote,CRF,70,Acer70,sample,dup,Acer,Frozen,1,u21,Patch Reef inside Molasses Trench area,25,-80.25,CRF,4/1/10,FKNMS-2011-150,Acer061 CRF Mote Frozen,36.1787595
+Acer062,FWC,CRF,25,Acer25,sample,,Acer,Frozen,1,M18,off Long Key,24.77885056,-80.73490143,FWC,4/20/10,FKNMS-2015-129-A2,Acer062 CRF FWC Frozen,NA
+Acer062,NSU,CRF,187,Acer187,sample,,Acer,Frozen,3,M18,off Long Key,24.77885056,-80.73490143,FWC,4/20/10,FKNMS-2015-129-A2,Acer062 CRF NSU Frozen,NA
+Acer071,NSU,CRF,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.65444692
+Acer071,Mote,CRF,33,Acer33,sample,,Acer,Frozen,1,u73,"glenn, Remnant coral off Tavernier, Near U46",25,-80.25,CRF,10/17/10,FKNMS-2011-150,Acer071 CRF Mote Frozen,36.10730273
+Acer071,FWC,CRF,29,Acer29,sample,,Acer,Frozen,1,u73,"glenn, Remnant coral off Tavernier, Near U46",25,-80.25,CRF,10/17/10,FKNMS-2011-150,Acer071 CRF FWC Frozen,36.18246113
+Acer089,NSU,CRF,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.69280796
+Acer089,Mote,CRF,6,Acer6,sample,,Acer,Frozen,1,u68,"Near Condo1, Jim",24.48999977,-80.38999939,CRF,10/28/10,FKNMS-2011-150,Acer089 CRF Mote Frozen,35.71162496
+Acer089,CRF,CRF,231,Acer231,sample,,Acer,Frozen,3,u68,"Near Condo1, Jim",24.48999977,-80.38999939,CRF,10/28/10,FKNMS-2011-150,Acer089 CRF CRF Frozen,35.81001322
+Acer091,Mote,CRF,73,Acer73,sample,,Acer,Frozen,1,u63,North Dry Rocks,25.70000076,-80.16999817,CRF,10/28/10,FKNMS-2011-150,Acer091 CRF Mote Frozen,36.08119991
+Acer091,CRF,CRF,210,Acer210,sample,,Acer,Frozen,3,u63,North Dry Rocks,25.70000076,-80.16999817,CRF,10/28/10,FKNMS-2011-150,Acer091 CRF CRF Frozen,36.22973893
+Acer093,CRF,CRF,263,Acer263,sample,,Acer,Frozen,3,u65,Patch reef between North Dry Rocks and Dry Rocks,25.70000076,-80.16999817,CRF,11/7/10,FKNMS-2011-150,Acer093 CRF CRF Frozen,35.43471391
+Acer093,Mote,CRF,10,Acer10,sample,,Acer,Frozen,1,u65,Patch reef between North Dry Rocks and Dry Rocks,25.70000076,-80.16999817,CRF,11/7/10,FKNMS-2011-150,Acer093 CRF Mote Frozen,35.93365329
+Acer093,Mote,CRF,10,Acer10,sample,,Acer,Frozen,1,u65,Patch reef between North Dry Rocks and Dry Rocks,25.70000076,-80.16999817,CRF,11/7/10,FKNMS-2011-150,Acer093 CRF Mote Frozen,35.93365329
+Acer097,CRF,CRF,239,Acer239,sample,,Acer,Frozen,3,u66,"Patch reef inside staghorn Nursery, Remnant",24.57999992,-80.26000214,CRF,11/7/10,FKNMS-2011-150,Acer097 CRF CRF Frozen,35.51049997
+Acer097,Mote,CRF,79,Acer79,sample,,Acer,Frozen,1,u66,"Patch reef inside staghorn Nursery, Remnant",24.57999992,-80.26000214,CRF,11/7/10,FKNMS-2011-150,Acer097 CRF Mote Frozen,36.10730273
+Acer103,CRF,CRF,266,Acer266,sample,,Acer,Frozen,3,u76,Lower Matecumbe ,24.48999977,-80.38999939,CRF,6/14/11,FKNMS-2011-150,Acer103 CRF CRF Frozen,35.71126225
+Acer103,NSU,CRF,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.84940191
+Acer103,Mote,CRF,68,Acer68b,sample,dup,Acer,Frozen,4,u76,Lower Matecumbe ,24.48999977,-80.38999939,CRF,6/14/11,FKNMS-2011-150,Acer103 CRF Mote Frozen,35.94680725
+Acer103,Mote,CRF,68,Acer68c,sample,dup,Acer,Frozen,4,u76,Lower Matecumbe ,24.48999977,-80.38999939,CRF,6/14/11,FKNMS-2011-150,Acer103 CRF Mote Frozen,35.94680725
+Acer103,Mote,CRF,68,Acer68,sample,dup,Acer,Frozen,1,u76,Lower Matecumbe ,24.48999977,-80.38999939,CRF,6/14/11,FKNMS-2011-150,Acer103 CRF Mote Frozen,35.94680725
+Acer103,UM,CRF,145,Acer145,sample,,Acer,Frozen,2,u76,Lower Matecumbe ,24.48999977,-80.38999939,CRF,6/14/11,FKNMS-2011-150,Acer103 CRF UM Frozen,36.46989981
+Acer117,Mote,CRF,9,Acer9,sample,,Acer,Frozen,1,KW13,Inshore of 9 Foot Stake #1,24.28000069,-81.44999695,CRF,12/7/05,FKNMS-2011-159-A3,Acer117 CRF Mote Frozen,35.60263368
+Acer117,NSU,CRF,193,Acer193,sample,,Acer,Frozen,3,KW13,Inshore of 9 Foot Stake #1,24.28000069,-81.44999695,CRF,12/7/05,FKNMS-2011-159-A3,Acer117 CRF NSU Frozen,35.91033543
+Acer117,CRF,CRF,223,Acer223,sample,dup,Acer,Frozen,3,KW13,Inshore of 9 Foot Stake #1,24.28000069,-81.44999695,CRF,12/7/05,FKNMS-2011-159-A3,Acer117 CRF CRF Frozen,36.09505447
+Acer120,CRF,CRF,232,Acer232,sample,dup,Acer,Frozen,3,KW21,"Man Key, off Key West",24.29999924,-81.55000305,CRF,5/14/15,FKNMS-2011-159-A3,Acer120 CRF CRF Frozen,36.13226863
+Acer120,Mote,CRF,38,Acer38,sample,,Acer,Frozen,1,KW21,"Man Key, off Key West",24.29999924,-81.55000305,CRF,5/14/15,FKNMS-2011-159-A3,Acer120 CRF Mote Frozen,36.19022363
+Acer123,CRF,CRF,216,Acer216,sample,,Acer,Frozen,3,KW12,"Western Sambo, south end",24.28000069,-81.43000031,CRF,6/27/18,FKNMS-2011-159-A3,Acer123 CRF CRF Frozen,35.55993483
+Acer123,Mote,CRF,89,Acer89,sample,,Acer,Frozen,1,KW12,"Western Sambo, south end",24.28000069,-81.43000031,CRF,6/27/18,FKNMS-2011-159-A3,Acer123 CRF Mote Frozen,35.8918415
+Acer126,Mote,CRF,87,Acer87,sample,,Acer,Frozen,1,u99,"Turtle Rocks, inshore",25.15999985,-80.12000275,CRF,6/27/18,FKNMS-2011-159-A3,Acer126 CRF Mote Frozen,35.65744183
+Acer126,CRF,CRF,211,Acer211,sample,,Acer,Frozen,3,u99,"Turtle Rocks, inshore",25.15999985,-80.12000275,CRF,6/27/18,FKNMS-2011-159-A3,Acer126 CRF CRF Frozen,36.0277771
+Acer126,UM,CRF,173,Acer173,sample,,Acer,Frozen,3,u99,"Turtle Rocks, inshore",25.15999985,-80.12000275,CRF,6/27/18,FKNMS-2011-159-A3,Acer126 CRF UM Frozen,36.46673075
+Acer127,Mote,CRF,44,Acer44,sample,,Acer,Frozen,1,u33,Patch Reef just off Triangle Marker off Tavernier,25,-80.26999664,CRF,5/13/08,FKNMS-2008-006,Acer127 CRF Mote Frozen,35.71844205
+Acer127,CRF,CRF,262,Acer262,sample,,Acer,Frozen,3,u33,Patch Reef just off Triangle Marker off Tavernier,25,-80.26999664,CRF,5/13/08,FKNMS-2008-006,Acer127 CRF CRF Frozen,35.78889093
+Acerv1,CRF,UM,219,Acer219,sample,,Acer,Frozen,3,,Patch Reef East of Old Rhodes Key,25.54716682,-80.66783142,UM,7/8/07,BISC-2009-SCI-0013,Acerv1 UM CRF Frozen,35.90197931
+Acerv1,UM,UM,125,Acer125,sample,,Acer,Frozen,2,,Patch Reef East of Old Rhodes Key,25.54716682,-80.66783142,UM,7/8/07,BISC-2009-SCI-0013,Acerv1 UM UM Frozen,36.01481246
+Acerv1,NSU,UM,202,Acer202,sample,,Acer,Frozen,3,,Patch Reef East of Old Rhodes Key,25.54716682,-80.66783142,UM,7/8/07,BISC-2009-SCI-0013,Acerv1 UM NSU Frozen,36.02817263
+Acerv1,Mote,UM,5,Acer5,sample,,Acer,Frozen,1,,Patch Reef East of Old Rhodes Key,25.54716682,-80.66783142,UM,7/8/07,BISC-2009-SCI-0013,Acerv1 UM Mote Frozen,36.05718778
+Acerv2,CRF,UM,214,Acer214,sample,,Acer,Frozen,3,,Patch Reef East of Old Rhodes Key,25.18000031,-80.11000061,UM,7/16/07,SAL-18-1723-SCRP,Acerv2 UM CRF Frozen,35.79923984
+Acerv2,NSU,UM,195,Acer195,sample,,Acer,Frozen,3,,Patch Reef East of Old Rhodes Key,25.18000031,-80.11000061,UM,7/16/07,SAL-18-1723-SCRP,Acerv2 UM NSU Frozen,36.12012979
+Acerv2,UM,UM,135,Acer135,sample,,Acer,Frozen,2,,Patch Reef East of Old Rhodes Key,25.18000031,-80.11000061,UM,7/16/07,SAL-18-1723-SCRP,Acerv2 UM UM Frozen,36.39541044
+Acerv3,CRF,UM,213,Acer213,sample,,Acer,Frozen,3,,Patch Reef East of Old Rhodes Key,25.68283272,-80.15416718,UM,7/16/07,BISC-2009-SCI-0013,Acerv3 UM CRF Frozen,35.67935462
+Acerv3,NSU,UM,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.08505912
+Acerv3,Mote,UM,102,Acer102,sample,,Acer,Frozen,2,,Patch Reef East of Old Rhodes Key,25.68283272,-80.15416718,UM,7/16/07,BISC-2009-SCI-0013,Acerv3 UM Mote Frozen,36.10528978
+Acerv3,UM,UM,133,Acer133,sample,,Acer,Frozen,2,,Patch Reef East of Old Rhodes Key,25.68283272,-80.15416718,UM,7/16/07,BISC-2009-SCI-0013,Acerv3 UM UM Frozen,36.12035109
+CheetosB,Mote,UM,49,Acer49,sample,,Acer,Frozen,1,,Patch Reef East of Old Rhodes Key,25.53516579,-81.03683472,UM,2009,BISC-2009-SCI-0013,CheetosB UM Mote Frozen,35.87247157
+CheetosB,CRF,UM,254,Acer254,sample,,Acer,Frozen,3,,Patch Reef East of Old Rhodes Key,25.53516579,-81.03683472,UM,2009,BISC-2009-SCI-0013,CheetosB UM CRF Frozen,35.96525291
+CheetosB,NSU,UM,183,Acer183,sample,,Acer,Frozen,3,,Patch Reef East of Old Rhodes Key,25.53516579,-81.03683472,UM,2009,BISC-2009-SCI-0013,CheetosB UM NSU Frozen,36.1352446
+CheetosB,UM,UM,120,Acer120,sample,,Acer,Frozen,2,,Patch Reef East of Old Rhodes Key,25.53516579,-81.03683472,UM,2009,BISC-2009-SCI-0013,CheetosB UM UM Frozen,36.32102046
+Coopers,CRF,UM,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.90197931
+Coopers,UM,UM,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.01481246
+Coopers,Mote,UM,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.05718778
+CoopersA,CRF,UM,208,Acer208R,sample,,Acer,Fresh,4,,Patch reef off of northern end of Sands Key,25.29999924,-80.06999969,UM,7/11/07,BISC-2009-SCI-0013,CoopersA UM CRF Fresh,NA
+CoopersA,CRF,UM,269,Acer269,sample,,Acer,Frozen,2,,Patch reef off of northern end of Sands Key,25.29999924,-80.06999969,UM,7/11/07,BISC-2009-SCI-0013,CoopersA UM CRF Frozen,NA
+CoopersA,Mote,UM,591,Acer591,sample,,Acer,Fresh,4,,Patch reef off of northern end of Sands Key,25.29999924,-80.06999969,UM,7/11/07,BISC-2009-SCI-0013,CoopersA UM Mote Fresh,NA
+CoopersA,Mote,UM,90,Acer90,sample,,Acer,Frozen,1,,Patch reef off of northern end of Sands Key,25.29999924,-80.06999969,UM,7/11/07,BISC-2009-SCI-0013,CoopersA UM Mote Frozen,NA
+CoopersA,UM,UM,174,Acer174,sample,,Acer,Frozen,3,,Patch reef off of northern end of Sands Key,25.29999924,-80.06999969,UM,7/11/07,BISC-2009-SCI-0013,CoopersA UM UM Frozen,NA
+CoopersA,UM,UM,341,Acer341,sample,,Acer,Fresh,4,,Patch reef off of northern end of Sands Key,25.29999924,-80.06999969,UM,7/11/07,BISC-2009-SCI-0013,CoopersA UM UM Fresh,NA
+DT1,CRF,FWC,235,Acer235,sample,dup,Acer,Frozen,3,C1441,,NA,NA,,,,DT1 FWC CRF Frozen,NA
+DT1,FWC,FWC,17,Acer17,sample,,Acer,Frozen,1,C1441,,NA,NA,,,,DT1 FWC FWC Frozen,NA
+DT1,UM,FWC,118,Acer118,sample,,Acer,Frozen,2,C1441,,NA,NA,,,,DT1 FWC UM Frozen,NA
+DT2,CRF,FWC,220,Acer220,sample,,Acer,Frozen,3,C1446,,NA,NA,,,,DT2 FWC CRF Frozen,NA
+DT2,FWC,FWC,16,Acer16,sample,,Acer,Frozen,1,C1446,,NA,NA,,,,DT2 FWC FWC Frozen,NA
+DT2,UM,FWC,162,Acer162,sample,,Acer,Frozen,2,C1446,,NA,NA,,,,DT2 FWC UM Frozen,NA
+Elkhorn,NSU,UM,186,Acer186,sample,,Acer,Frozen,3,,Elkhorn Reef; reef off of Totten Key,25.99900055,-81.84799957,UM,6/26/07,BISC-2009-SCI-0013,Elkhorn UM NSU Frozen,35.90766956
+Elkhorn,Mote,UM,77,Acer77,sample,,Acer,Frozen,1,,Elkhorn Reef; reef off of Totten Key,25.99900055,-81.84799957,UM,6/26/07,BISC-2009-SCI-0013,Elkhorn UM Mote Frozen,35.90939763
+Elkhorn,CRF,UM,212,Acer212,sample,dup,Acer,Frozen,3,,Elkhorn Reef; reef off of Totten Key,25.99900055,-81.84799957,UM,6/26/07,BISC-2009-SCI-0013,Elkhorn UM CRF Frozen,36.12010613
+Elkhorn,UM,UM,137,Acer137,sample,,Acer,Frozen,2,,Elkhorn Reef; reef off of Totten Key,25.99900055,-81.84799957,UM,6/26/07,BISC-2009-SCI-0013,Elkhorn UM UM Frozen,36.26680046
+FM12,UM,FWC,160,Acer160,sample,,Acer,Frozen,2,12,near Delta Shoal,24.63965034,-81.06620026,FWC,5/6/10,FKNMS-2015-129-A2,FM12 FWC UM Frozen,36.05375562
+FM12,FWC,FWC,14,Acer14,sample,,Acer,Frozen,1,12,near Delta Shoal,24.63965034,-81.06620026,FWC,5/6/10,FKNMS-2015-129-A2,FM12 FWC FWC Frozen,36.12963447
+FM13,FWC,FWC,26,Acer26,sample,,Acer,Frozen,1,13,Jeff's Patch,24.69766998,-80.95809937,FWC,5/5/10,FKNMS-2015-129-A2,FM13 FWC FWC Frozen,NA
+FM13,UM,FWC,172,Acer172,sample,,Acer,Frozen,3,13,Jeff's Patch,24.69766998,-80.95809937,FWC,5/5/10,FKNMS-2015-129-A2,FM13 FWC UM Frozen,NA
+FM14,FWC,FWC,30,Acer30,sample,,Acer,Frozen,1,14,Jeff's Patch,24.69755936,-80.95851898,FWC,5/5/10,FKNMS-2015-129-A2,FM14 FWC FWC Frozen,35.71580469
+FM14,CRF,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.80732107
+FM14,UM,FWC,108,Acer108,sample,,Acer,Frozen,2,14,Jeff's Patch,24.69755936,-80.95851898,FWC,5/5/10,FKNMS-2015-129-A2,FM14 FWC UM Frozen,35.82253051
+FM19,CRF,FWC,274,Acer274,sample,,Acer,Frozen,2,19,off Long Key,24.77630043,-80.73651123,FWC,4/20/10,FKNMS-2015-129-A2,FM19 FWC CRF Frozen,NA
+FM19,FWC,FWC,20,Acer20,sample,,Acer,Frozen,1,19,off Long Key,24.77630043,-80.73651123,FWC,4/20/10,FKNMS-2015-129-A2,FM19 FWC FWC Frozen,NA
+FM19,UM,FWC,112,Acer112,sample,,Acer,Frozen,2,19,off Long Key,24.77630043,-80.73651123,FWC,4/20/10,FKNMS-2015-129-A2,FM19 FWC UM Frozen,NA
+FM20,FWC,FWC,24,Acer24,sample,,Acer,Frozen,1,20,off Long Key,24.77885056,-80.73490143,FWC,4/20/10,FKNMS-2015-129-A2,FM20 FWC FWC Frozen,35.54527916
+FM20,UM,FWC,157,Acer157,sample,,Acer,Frozen,2,20,off Long Key,24.77885056,-80.73490143,FWC,4/20/10,FKNMS-2015-129-A2,FM20 FWC UM Frozen,35.68756489
+FM20,NSU,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.14030032
+FM21,NSU,FWC,190,Acer190,sample,,Acer,Frozen,3,21,Stag party,24.75824928,-80.76598358,FWC,1/19/11,FKNMS-2015-129-A2,FM21 FWC NSU Frozen,35.94570077
+FM21,UM,FWC,126,Acer126,sample,,Acer,Frozen,2,21,Stag party,24.75824928,-80.76598358,FWC,1/19/11,FKNMS-2015-129-A2,FM21 FWC UM Frozen,35.96761469
+FM21,FWC,FWC,21,Acer21,sample,,Acer,Frozen,1,21,Stag party,24.75824928,-80.76598358,FWC,1/19/11,FKNMS-2015-129-A2,FM21 FWC FWC Frozen,NA
+FM6,FWC,FWC,27,Acer27,sample,,Acer,Frozen,1,6,Off Grassy Key,24.70216942,-80.9386673,FWC,3/18/10,FKNMS-2015-129-A2,FM6 FWC FWC Frozen,35.74860312
+FM6,UM,FWC,147,Acer147,sample,,Acer,Frozen,2,6,Off Grassy Key,24.70216942,-80.9386673,FWC,3/18/10,FKNMS-2015-129-A2,FM6 FWC UM Frozen,35.96761469
+FM9,FWC,FWC,23,Acer23,sample,,Acer,Frozen,1,9,East Washerwoman Shoal,24.6642704,-81.07655334,FWC,4/28/10,FKNMS-2015-129-A2,FM9 FWC FWC Frozen,35.71580469
+FM9,UM,FWC,161,Acer161,sample,,Acer,Frozen,2,9,East Washerwoman Shoal,24.6642704,-81.07655334,FWC,4/28/10,FKNMS-2015-129-A2,FM9 FWC UM Frozen,35.82253051
+FM9,NSU,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.94102934
+Kelseys1,CRF,UM,279,Acer279,sample,,Acer,Frozen,2,,Patch Reef East of the southern end of Elliot Key,25.56399918,-81.66200256,UM,2009,BISC-2009-SCI-0013,Kelseys1 UM CRF Frozen,35.69562916
+Kelseys1,CRF,UM,413,Acer413,sample,,Acer,Fresh,4,,Patch Reef East of the southern end of Elliot Key,25.56399918,-81.66200256,UM,2009,BISC-2009-SCI-0013,Kelseys1 UM CRF Fresh,35.69562916
+Kelseys1,Mote,UM,595,Acer595,sample,,Acer,Fresh,4,,Patch Reef East of the southern end of Elliot Key,25.56399918,-81.66200256,UM,2009,BISC-2009-SCI-0013,Kelseys1 UM Mote Fresh,36.12108116
+Kelseys1,Mote,UM,69,Acer69,sample,dup,Acer,Frozen,1,,Patch Reef East of the southern end of Elliot Key,25.56399918,-81.66200256,UM,2009,BISC-2009-SCI-0013,Kelseys1 UM Mote Frozen,36.12108116
+Kelseys1,Mote,UM,69,Acer69b,sample,dup,Acer,Frozen,4,,Patch Reef East of the southern end of Elliot Key,25.56399918,-81.66200256,UM,2009,BISC-2009-SCI-0013,Kelseys1 UM Mote Frozen,36.12108116
+Kelseys1,UM,UM,168,Acer168,sample,,Acer,Frozen,3,,Patch Reef East of the southern end of Elliot Key,25.56399918,-81.66200256,UM,2009,BISC-2009-SCI-0013,Kelseys1 UM UM Frozen,36.19529326
+Kelseys1,UM,UM,343,Acer343,sample,,Acer,Fresh,4,,Patch Reef East of the southern end of Elliot Key,25.56399918,-81.66200256,UM,2009,BISC-2009-SCI-0013,Kelseys1 UM UM Fresh,36.19529326
+Marker9,CRF,UM,237,Acer237,sample,,Acer,Frozen,3,,"Patch Reef off of Sands Key, by Marker 9",26.00300026,-81.42099762,UM,7/11/07,BISC-2009-SCI-0013,Marker9 UM CRF Frozen,35.90197931
+Marker9,CRF,UM,504,Acer504,sample,,Acer,Fresh,4,,"Patch Reef off of Sands Key, by Marker 9",26.00300026,-81.42099762,UM,7/11/07,BISC-2009-SCI-0013,Marker9 UM CRF Fresh,35.90197931
+Marker9,UM,UM,130,Acer130,sample,,Acer,Frozen,2,,"Patch Reef off of Sands Key, by Marker 9",26.00300026,-81.42099762,UM,7/11/07,BISC-2009-SCI-0013,Marker9 UM UM Frozen,36.01481246
+Marker9,UM,UM,358,Acer358,sample,,Acer,Fresh,4,,"Patch Reef off of Sands Key, by Marker 9",26.00300026,-81.42099762,UM,7/11/07,BISC-2009-SCI-0013,Marker9 UM UM Fresh,36.01481246
+Marker9,Mote,UM,596,Acer596,sample,,Acer,Fresh,4,,"Patch Reef off of Sands Key, by Marker 9",26.00300026,-81.42099762,UM,7/11/07,BISC-2009-SCI-0013,Marker9 UM Mote Fresh,36.05718778
+Marker9,Mote,UM,54,Acer54,sample,,Acer,Frozen,1,,"Patch Reef off of Sands Key, by Marker 9",26.00300026,-81.42099762,UM,7/11/07,BISC-2009-SCI-0013,Marker9 UM Mote Frozen,36.05718778
+MiamiBeachD,CRF,UM,207,Acer207,sample,dup,Acer,Frozen,3,,Miami Beach,26.39800072,-80.82800293,UM,2009,BISC-2009-SCI-0013,MiamiBeachD UM CRF Frozen,36.02479335
+MiamiBeachD,CRF,UM,236,Acer236R,sample,,Acer,Fresh,4,,Miami Beach,26.39800072,-80.82800293,UM,2009,BISC-2009-SCI-0013,MiamiBeachD UM CRF Fresh,36.02479335
+MiamiBeachD,Mote,UM,61,Acer61,sample,,Acer,Frozen,1,,Miami Beach,26.39800072,-80.82800293,UM,2009,BISC-2009-SCI-0013,MiamiBeachD UM Mote Frozen,36.04069787
+MiamiBeachD,Mote,UM,594,Acer594,sample,,Acer,Fresh,4,,Miami Beach,26.39800072,-80.82800293,UM,2009,BISC-2009-SCI-0013,MiamiBeachD UM Mote Fresh,36.04069787
+MiamiBeachD,UM,UM,364,Acer364,sample,,Acer,Fresh,4,,Miami Beach,26.39800072,-80.82800293,UM,2009,BISC-2009-SCI-0013,MiamiBeachD UM UM Fresh,36.16327876
+MiamiBeachD,UM,UM,113,Acer113,sample,,Acer,Frozen,2,,Miami Beach,26.39800072,-80.82800293,UM,2009,BISC-2009-SCI-0013,MiamiBeachD UM UM Frozen,36.16327876
+ML1,Mote,Mote,81,Acer81,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML1 Mote Mote Frozen,NA
+ML10,UM,Mote,402,Acer402,sample,,Acer,Fresh,4,10,Chad's nearshore heads,24.61515045,-81.37917328,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML10 Mote UM Fresh,35.82081011
+ML10,UM,Mote,159,Acer159,sample,,Acer,Frozen,2,10,Chad's nearshore heads,24.61515045,-81.37917328,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML10 Mote UM Frozen,35.82081011
+ML10,Mote,Mote,547,Acer547,sample,,Acer,Fresh,4,10,Chad's nearshore heads,24.61515045,-81.37917328,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML10 Mote Mote Fresh,36.05766126
+ML10,Mote,Mote,100,Acer100,sample,,Acer,Frozen,2,10,Chad's nearshore heads,24.61515045,-81.37917328,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML10 Mote Mote Frozen,36.05766126
+ML10,CRF,Mote,212,Acer212R,sample,,Acer,Fresh,4,10,Chad's nearshore heads,24.61515045,-81.37917328,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML10 Mote CRF Fresh,36.07354296
+ML10,CRF,Mote,241,Acer241,sample,,Acer,Frozen,3,10,Chad's nearshore heads,24.61515045,-81.37917328,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML10 Mote CRF Frozen,36.07354296
+ML13,Mote,Mote,548,Acer548,sample,,Acer,Fresh,4,13,Munson Reef,24.59592056,-81.37162018,Mote,12/1/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML13 Mote Mote Fresh,35.42166706
+ML13,Mote,Mote,64,Acer64,sample,,Acer,Frozen,1,13,Munson Reef,24.59592056,-81.37162018,Mote,12/1/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML13 Mote Mote Frozen,35.42166706
+ML13,CRF,Mote,253,Acer253,sample,,Acer,Frozen,3,13,Munson Reef,24.59592056,-81.37162018,Mote,12/1/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML13 Mote CRF Frozen,35.69961311
+ML13,CRF,Mote,207,Acer207R,sample,,Acer,Fresh,4,13,Munson Reef,24.59592056,-81.37162018,Mote,12/1/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML13 Mote CRF Fresh,35.69961311
+ML13,UM,Mote,141,Acer141,sample,,Acer,Frozen,2,13,Munson Reef,24.59592056,-81.37162018,Mote,12/1/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML13 Mote UM Frozen,35.74167086
+ML13,UM,Mote,398,Acer398,sample,,Acer,Fresh,4,13,Munson Reef,24.59592056,-81.37162018,Mote,12/1/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML13 Mote UM Fresh,35.74167086
+ML13,NSU,Mote,196,Acer196,sample,,Acer,Frozen,3,13,Munson Reef,24.59592056,-81.37162018,Mote,12/1/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML13 Mote NSU Frozen,36.01104931
+ML20,CRF,Mote,410,Acer410,sample,,Acer,Fresh,4,20,nearshore field trial site,24.62166977,-81.36312866,Mote,12/15/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML20 Mote CRF Fresh,35.28729688
+ML20,CRF,Mote,247,Acer247,sample,,Acer,Frozen,2,20,nearshore field trial site,24.62166977,-81.36312866,Mote,12/15/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML20 Mote CRF Frozen,35.28729688
+ML20,Mote,Mote,50,Acer50,sample,,Acer,Frozen,1,20,nearshore field trial site,24.62166977,-81.36312866,Mote,12/15/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML20 Mote Mote Frozen,35.48905933
+ML20,Mote,Mote,538,Acer538,sample,,Acer,Fresh,4,20,nearshore field trial site,24.62166977,-81.36312866,Mote,12/15/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML20 Mote Mote Fresh,35.48905933
+ML20,UM,Mote,406,Acer406,sample,,Acer,Fresh,4,20,nearshore field trial site,24.62166977,-81.36312866,Mote,12/15/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML20 Mote UM Fresh,35.76973321
+ML20,UM,Mote,110,Acer110,sample,,Acer,Frozen,2,20,nearshore field trial site,24.62166977,-81.36312866,Mote,12/15/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML20 Mote UM Frozen,35.76973321
+ML20,NSU,Mote,191,Acer191,sample,,Acer,Frozen,3,20,nearshore field trial site,24.62166977,-81.36312866,Mote,12/15/09,FKNMS-2009-099 (TNC - Meaghan Johnson),ML20 Mote NSU Frozen,36.04570976
+ML29,Mote,Mote,2,Acer2,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML29 Mote Mote Frozen,NA
+ML3,Mote,Mote,101,Acer101,sample,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,ML3 Mote Mote Frozen,NA
+ML31,Mote,Mote,76,Acer76,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML31 Mote Mote Frozen,NA
+ML34,Mote,Mote,85,Acer85,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML34 Mote Mote Frozen,NA
+ML36,Mote,Mote,31,Acer31,sample,,Acer,Frozen,1,36,offshore patch N. of Looe Key,24.56150055,-81.40788269,Mote,4/1/10,FKNMS-2009-099 (TNC - Meaghan Johnson),ML36 Mote Mote Frozen,35.92409332
+ML36,CRF,Mote,273,Acer273,sample,,Acer,Frozen,2,36,offshore patch N. of Looe Key,24.56150055,-81.40788269,Mote,4/1/10,FKNMS-2009-099 (TNC - Meaghan Johnson),ML36 Mote CRF Frozen,36.02476774
+ML36,UM,Mote,123,Acer123,sample,,Acer,Frozen,2,36,offshore patch N. of Looe Key,24.56150055,-81.40788269,Mote,4/1/10,FKNMS-2009-099 (TNC - Meaghan Johnson),ML36 Mote UM Frozen,36.22248276
+ML38,CRF,Mote,217,Acer217,sample,dup,Acer,Frozen,3,38,nursery reef,24.56306076,-81.40062714,Mote,4/5/10,FKNMS-2009-099 (TNC - Meaghan Johnson),ML38 Mote CRF Frozen,35.66573297
+ML38,Mote,Mote,106,Acer106,sample,,Acer,Frozen,2,38,nursery reef,24.56306076,-81.40062714,Mote,4/5/10,FKNMS-2009-099 (TNC - Meaghan Johnson),ML38 Mote Mote Frozen,36.0158089
+ML38,UM,Mote,176,Acer176,sample,,Acer,Frozen,3,38,nursery reef,24.56306076,-81.40062714,Mote,4/5/10,FKNMS-2009-099 (TNC - Meaghan Johnson),ML38 Mote UM Frozen,36.34248332
+ML4,CRF,Mote,272,Acer272b,sample,dup,Acer,Frozen,4,4,patch E. of Looe Research,24.56934929,-81.38168335,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML4 Mote CRF Frozen,36.12109683
+ML4,CRF,Mote,272,Acer272,sample,dup,Acer,Frozen,2,4,patch E. of Looe Research,24.56934929,-81.38168335,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML4 Mote CRF Frozen,36.12109683
+ML4,Mote,Mote,96,Acer96,sample,,Acer,Frozen,2,4,patch E. of Looe Research,24.56934929,-81.38168335,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML4 Mote Mote Frozen,36.16273152
+ML4,UM,Mote,151,Acer151,sample,,Acer,Frozen,2,4,patch E. of Looe Research,24.56934929,-81.38168335,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML4 Mote UM Frozen,36.44734309
+ML41,Mote,Mote,37,Acer37,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML41 Mote Mote Frozen,NA
+ML44,NSU,Mote,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.63855675
+ML44,CRF,Mote,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.66125668
+ML44,Mote,Mote,39,Acer39,sample,,Acer,Frozen,1,44,Big Pine Shoals,24.5685997,-81.32649994,Mote,5/21/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML44 Mote Mote Frozen,35.96620564
+ML44,UM,Mote,138,Acer138,sample,,Acer,Frozen,2,44,Big Pine Shoals,24.5685997,-81.32649994,Mote,5/21/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML44 Mote UM Frozen,36.05506711
+ML46,CRF,Mote,240,Acer240,sample,,Acer,Frozen,3,46,Wonderland,24.56080055,-81.5014267,Mote,5/25/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML46 Mote CRF Frozen,36.09492773
+ML46,UM,Mote,114,Acer114,sample,,Acer,Frozen,2,46,Wonderland,24.56080055,-81.5014267,Mote,5/25/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML46 Mote UM Frozen,36.18884954
+ML46,Mote,Mote,65,Acer65,sample,,Acer,Frozen,1,46,Wonderland,24.56080055,-81.5014267,Mote,5/25/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML46 Mote Mote Frozen,36.32390945
+ML47,FWC,Mote,13,Acer13,sample,,Acer,Frozen,1,47,patch 1.8nm WSW of Wonderland,24.54834938,-81.53320313,Mote,5/25/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML47 Mote FWC Frozen,35.62966697
+ML47,CRF,Mote,221,Acer221,sample,,Acer,Frozen,3,47,patch 1.8nm WSW of Wonderland,24.54834938,-81.53320313,Mote,5/25/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML47 Mote CRF Frozen,35.66125668
+ML47,UM,Mote,166,Acer166,sample,,Acer,Frozen,2,47,patch 1.8nm WSW of Wonderland,24.54834938,-81.53320313,Mote,5/25/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML47 Mote UM Frozen,36.05506711
+ML48,CRF,Mote,278,Acer278,sample,,Acer,Frozen,2,48,Maryland Shoals Rockpiles,24.52149963,-81.57689667,Mote,5/28/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML48 Mote CRF Frozen,35.52245324
+ML48,Mote,Mote,34,Acer34,sample,,Acer,Frozen,1,48,Maryland Shoals Rockpiles,24.52149963,-81.57689667,Mote,5/28/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML48 Mote Mote Frozen,35.70705726
+ML48,FWC,Mote,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.91924045
+ML48,NSU,Mote,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.01423076
+ML48,UM,Mote,143,Acer143,sample,,Acer,Frozen,2,48,Maryland Shoals Rockpiles,24.52149963,-81.57689667,Mote,5/28/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML48 Mote UM Frozen,36.08831798
+ML5,Mote,Mote,11,Acer11,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML5 Mote Mote Frozen,NA
+ML50,Mote,Mote,72,Acer72,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML50 Mote Mote Frozen,NA
+ML51,CRF,Mote,242,Acer242,sample,,Acer,Frozen,3,51,ledge 1.2 nm E of American Shoals,24.52734947,-81.49894714,Mote,10/1/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML51 Mote CRF Frozen,35.33854203
+ML51,UM,Mote,121,Acer121,sample,,Acer,Frozen,2,51,ledge 1.2 nm E of American Shoals,24.52734947,-81.49894714,Mote,10/1/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML51 Mote UM Frozen,35.66256118
+ML51,Mote,Mote,55,Acer55,sample,,Acer,Frozen,1,51,ledge 1.2 nm E of American Shoals,24.52734947,-81.49894714,Mote,10/1/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML51 Mote Mote Frozen,35.72718602
+ML51,NSU,Mote,194,Acer194,sample,,Acer,Frozen,3,51,ledge 1.2 nm E of American Shoals,24.52734947,-81.49894714,Mote,10/1/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML51 Mote NSU Frozen,35.76875159
+ML54,Mote,Mote,75,Acer75,sample,,Acer,Frozen,1,54,W. end of offshore patches N. of Looe,24.55903053,-81.41293335,Mote,11/11/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML54 Mote Mote Frozen,35.41528728
+ML54,CRF,Mote,259,Acer259,sample,,Acer,Frozen,3,54,W. end of offshore patches N. of Looe,24.55903053,-81.41293335,Mote,11/11/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML54 Mote CRF Frozen,35.76086836
+ML54,UM,Mote,167,Acer167,sample,,Acer,Frozen,3,54,W. end of offshore patches N. of Looe,24.55903053,-81.41293335,Mote,11/11/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML54 Mote UM Frozen,36.03869065
+ML55,Mote,Mote,56,Acer56,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML55 Mote Mote Frozen,NA
+ML56,Mote,Mote,92,Acer92,sample,,Acer,Frozen,1,56,W. end of offshore patches N. of Looe,24.55912018,-81.41356659,Mote,11/11/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML56 Mote Mote Frozen,35.8401035
+ML56,NSU,Mote,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.95139487
+ML56,UM,Mote,150,Acer150,sample,,Acer,Frozen,2,56,W. end of offshore patches N. of Looe,24.55912018,-81.41356659,Mote,11/11/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML56 Mote UM Frozen,36.81631497
+ML56,CRF,Mote,251,Acer251,sample,,Acer,Frozen,2,56,W. end of offshore patches N. of Looe,24.55912018,-81.41356659,Mote,11/11/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML56 Mote CRF Frozen,NA
+ML57,Mote,Mote,91,Acer91,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML57 Mote Mote Frozen,NA
+ML58,CRF,Mote,256,Acer256,sample,,Acer,Frozen,3,58,Lions Den,24.52327919,-81.53572083,Mote,11/16/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML58 Mote CRF Frozen,35.69026808
+ML58,UM,Mote,139,Acer139,sample,,Acer,Frozen,2,58,Lions Den,24.52327919,-81.53572083,Mote,11/16/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML58 Mote UM Frozen,36.05538728
+ML58,Mote,Mote,41,Acer41,sample,,Acer,Frozen,1,58,Lions Den,24.52327919,-81.53572083,Mote,11/16/10,FKNMS-2009-099-A1 (TNC - Meaghan Johnson),ML58 Mote Mote Frozen,36.12421236
+ML6,Mote,Mote,43,Acer43,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML6 Mote Mote Frozen,NA
+ML6,Mote,Mote,107,Acer107,sample,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,ML6 Mote Mote Frozen,NA
+ML62,Mote,Mote,105,Acer105,sample,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,ML62 Mote Mote Frozen,NA
+ML63,CRF,Mote,228,Acer228,sample,,Acer,Frozen,3,63,Super Stag,24.52983093,-81.64069366,Mote,5/21/13,FKNMS-2011-150 (TNC - Caitlin Lustic),ML63 Mote CRF Frozen,NA
+ML63,FWC,Mote,15,Acer15,sample,,Acer,Frozen,1,63,Super Stag,24.52983093,-81.64069366,Mote,5/21/13,FKNMS-2011-150 (TNC - Caitlin Lustic),ML63 Mote FWC Frozen,NA
+ML63,UM,Mote,109,Acer109,sample,,Acer,Frozen,2,63,Super Stag,24.52983093,-81.64069366,Mote,5/21/13,FKNMS-2011-150 (TNC - Caitlin Lustic),ML63 Mote UM Frozen,NA
+ML7,Mote,Mote,86,Acer86,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML7 Mote Mote Frozen,NA
+ML70,NSU,Mote,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.7768028
+ML70,UM,Mote,144,Acer144,sample,,Acer,Frozen,2,70,patch 0.6nm WSW of Wonderland,24.55717087,-81.51013184,Mote,5/51/15,FKNMS-2011-150-A3 (TNC - Caitlin Lustic),ML70 Mote UM Frozen,35.93347749
+ML70,CRF,Mote,268,Acer268,sample,,Acer,Frozen,2,70,patch 0.6nm WSW of Wonderland,24.55717087,-81.51013184,Mote,5/51/15,FKNMS-2011-150-A3 (TNC - Caitlin Lustic),ML70 Mote CRF Frozen,36.08643592
+ML70,Mote,Mote,94,Acer94,sample,,Acer,Frozen,2,70,patch 0.6nm WSW of Wonderland,24.55717087,-81.51013184,Mote,5/51/15,FKNMS-2011-150-A3 (TNC - Caitlin Lustic),ML70 Mote Mote Frozen,36.1545547
+ML75,Mote,Mote,47,Acer47,sample,,Acer,Frozen,1,75,ledge west of Looe,24.5401001,-81.44882202,Mote,12/15/15,FKNMS-2011-150-A3 (TNC - Caitlin Lustic),ML75 Mote Mote Frozen,35.72009137
+ML75,CRF,Mote,225,Acer225,sample,dup,Acer,Frozen,3,75,ledge west of Looe,24.5401001,-81.44882202,Mote,12/15/15,FKNMS-2011-150-A3 (TNC - Caitlin Lustic),ML75 Mote CRF Frozen,35.72408698
+ML75,FWC,Mote,12,Acer12,sample,,Acer,Frozen,1,75,ledge west of Looe,24.5401001,-81.44882202,Mote,12/15/15,FKNMS-2011-150-A3 (TNC - Caitlin Lustic),ML75 Mote FWC Frozen,35.89648751
+ML75,UM,Mote,169,Acer169,sample,,Acer,Frozen,3,75,ledge west of Looe,24.5401001,-81.44882202,Mote,12/15/15,FKNMS-2011-150-A3 (TNC - Caitlin Lustic),ML75 Mote UM Frozen,36.02615384
+ML76,CRF,Mote,233,Acer233,sample,,Acer,Frozen,3,76,patch W. of Erinn's reef,24.52658081,-81.50102234,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML76 Mote CRF Frozen,NA
+ML76,Mote,Mote,95,Acer95,sample,,Acer,Frozen,2,76,patch W. of Erinn's reef,24.52658081,-81.50102234,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML76 Mote Mote Frozen,NA
+ML76,UM,Mote,178,Acer178,sample,,Acer,Frozen,3,76,patch W. of Erinn's reef,24.52658081,-81.50102234,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML76 Mote UM Frozen,NA
+ML77,UM,Mote,171,Acer171,sample,,Acer,Frozen,3,77,another patch E. of Erinn's reef,24.52998924,-81.48959351,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML77 Mote UM Frozen,35.66025466
+ML77,Mote,Mote,3,Acer3,sample,,Acer,Frozen,1,77,another patch E. of Erinn's reef,24.52998924,-81.48959351,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML77 Mote Mote Frozen,35.75456002
+ML77,CRF,Mote,277,Acer277,sample,,Acer,Frozen,2,77,another patch E. of Erinn's reef,24.52998924,-81.48959351,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML77 Mote CRF Frozen,35.78236098
+ML78,Mote,Mote,1,Acer1,sample,,Acer,Frozen,1,78,another patch E. of Erinn's reef,24.52998924,-81.48959351,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML78 Mote Mote Frozen,35.75745531
+ML78,CRF,Mote,227,Acer227,sample,,Acer,Frozen,3,78,another patch E. of Erinn's reef,24.52998924,-81.48959351,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML78 Mote CRF Frozen,35.80559924
+ML78,UM,Mote,177,Acer177,sample,,Acer,Frozen,3,78,another patch E. of Erinn's reef,24.52998924,-81.48959351,Mote,2/17/16,FKNMS-2015-163 (Mote - Erich Bartels),ML78 Mote UM Frozen,36.0598559
+ML79,CRF,Mote,261,Acer261,sample,,Acer,Frozen,3,79,patch E. of American,24.52639961,-81.50517273,Mote,2/29/16,FKNMS-2015-163 (Mote - Erich Bartels),ML79 Mote CRF Frozen,35.66997793
+ML79,Mote,Mote,98,Acer98,sample,,Acer,Frozen,2,79,patch E. of American,24.52639961,-81.50517273,Mote,2/29/16,FKNMS-2015-163 (Mote - Erich Bartels),ML79 Mote Mote Frozen,35.87618219
+ML79,UM,Mote,180,Acer180,sample,,Acer,Frozen,3,79,patch E. of American,24.52639961,-81.50517273,Mote,2/29/16,FKNMS-2015-163 (Mote - Erich Bartels),ML79 Mote UM Frozen,35.90282757
+ML8,CRF,Mote,270,Acer270,sample,,Acer,Frozen,2,8,mid-channel patch off Summerland,24.58353043,-81.4329834,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML8 Mote CRF Frozen,NA
+ML8,Mote,Mote,53,Acer53,sample,,Acer,Frozen,1,8,mid-channel patch off Summerland,24.58353043,-81.4329834,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML8 Mote Mote Frozen,NA
+ML8,UM,Mote,154,Acer154,sample,,Acer,Frozen,2,8,mid-channel patch off Summerland,24.58353043,-81.4329834,Mote,2/23/08,FKNMS-2007-041 (TNC - Meaghan Johnson),ML8 Mote UM Frozen,NA
+ML80,CRF,Mote,234,Acer234,sample,dup,Acer,Frozen,3,80,patch E. of American,24.52639961,-81.50517273,Mote,2/29/16,FKNMS-2015-163 (Mote - Erich Bartels),ML80 Mote CRF Frozen,35.51468507
+ML80,UM,Mote,140,Acer140,sample,,Acer,Frozen,2,80,patch E. of American,24.52639961,-81.50517273,Mote,2/29/16,FKNMS-2015-163 (Mote - Erich Bartels),ML80 Mote UM Frozen,35.72214287
+ML80,Mote,Mote,80,Acer80,sample,,Acer,Frozen,1,80,patch E. of American,24.52639961,-81.50517273,Mote,2/29/16,FKNMS-2015-163 (Mote - Erich Bartels),ML80 Mote Mote Frozen,35.9806718
+ML84,Mote,Mote,88,Acer88,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML84 Mote Mote Frozen,NA
+ML88,CRF,Mote,244,Acer244,sample,,Acer,Frozen,2,88,ledge W. of American,24.51766014,-81.5440979,Mote,3/2/16,FKNMS-2015-163 (Mote - Erich Bartels),ML88 Mote CRF Frozen,NA
+ML88,CRF,Mote,513,Acer513,sample,,Acer,Fresh,4,88,ledge W. of American,24.51766014,-81.5440979,Mote,3/2/16,FKNMS-2015-163 (Mote - Erich Bartels),ML88 Mote CRF Fresh,NA
+ML88,Mote,Mote,534,Acer534,sample,,Acer,Fresh,4,88,ledge W. of American,24.51766014,-81.5440979,Mote,3/2/16,FKNMS-2015-163 (Mote - Erich Bartels),ML88 Mote Mote Fresh,NA
+ML88,Mote,Mote,58,Acer58,sample,,Acer,Frozen,1,88,ledge W. of American,24.51766014,-81.5440979,Mote,3/2/16,FKNMS-2015-163 (Mote - Erich Bartels),ML88 Mote Mote Frozen,NA
+ML88,UM,Mote,117,Acer117,sample,,Acer,Frozen,2,88,ledge W. of American,24.51766014,-81.5440979,Mote,3/2/16,FKNMS-2015-163 (Mote - Erich Bartels),ML88 Mote UM Frozen,NA
+ML88,UM,Mote,395,Acer395,sample,,Acer,Fresh,4,88,ledge W. of American,24.51766014,-81.5440979,Mote,3/2/16,FKNMS-2015-163 (Mote - Erich Bartels),ML88 Mote UM Fresh,NA
+ML89,Mote,Mote,7,Acer7,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML89 Mote Mote Frozen,NA
+ML90,Mote,Mote,52,Acer52,sample,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,ML90 Mote Mote Frozen,NA
+NA,NA,NA,134,Acer134,sample,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,NTCP3a,AcerNTCP3a,NTC,,Acer,Frozen,3,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,MockP1,AcerMockP1,Mock,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,NTCP3b,AcerNTCP3b,NTC,,Acer,Frozen,3,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,DNAblankP1,AcerDNAblankP1,DNAblank,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,NTCP2b,AcerNTCP2b,NTC,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,NTCP2a,AcerNTCP2a,NTC,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,NTCP1b,AcerNTCP1b,NTC,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,MOCKP2,AcerMOCKP2,Mock,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,NTCP1a,AcerNTCP1a,NTC,,Acer,Frozen,1,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,129,Acer129,sample,,Acer,Frozen,2,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NA,NA,NA,MockP3,AcerMockP3,Mock,,Acer,Frozen,3,NA,NA,NA,NA,NA,NA,NA,NA NA NA Frozen,NA
+NorthMidchannel,UM,UM,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.37114713
+NorthMidchannelA,Mote,UM,45,Acer45,sample,,Acer,Frozen,1,,Patch reef off of northern end of Elliot Key,25.27000046,-80.80000305,UM,2009,BISC-2009-SCI-0013,NorthMidchannelA UM Mote Frozen,NA
+NorthMidchannelA,UM,UM,131,Acer131,sample,,Acer,Frozen,2,,Patch reef off of northern end of Elliot Key,25.27000046,-80.80000305,UM,2009,BISC-2009-SCI-0013,NorthMidchannelA UM UM Frozen,NA
+StagreefA,Mote,UM,48,Acer48,sample,,Acer,Frozen,1,,Stagreef,26.12899971,-80.6210022,UM,2009,BISC-2009-SCI-0013,StagreefA UM Mote Frozen,35.55332892
+StagreefA,NSU,UM,182,Acer182,sample,,Acer,Frozen,3,,Stagreef,26.12899971,-80.6210022,UM,2009,BISC-2009-SCI-0013,StagreefA UM NSU Frozen,35.59956858
+StagreefA,CRF,UM,236,Acer236,sample,dup,Acer,Frozen,3,,Stagreef,26.12899971,-80.6210022,UM,2009,BISC-2009-SCI-0013,StagreefA UM CRF Frozen,35.89718336
+StagreefA,UM,UM,119,Acer119,sample,,Acer,Frozen,2,,Stagreef,26.12899971,-80.6210022,UM,2009,BISC-2009-SCI-0013,StagreefA UM UM Frozen,36.2201926
+StephsA,CRF,UM,215,Acer215,sample,dup,Acer,Frozen,3,,Patch Reef East of Elliot Key,25.73800087,-80.82800293,UM,2009,BISC-2009-SCI-0013,StephsA UM CRF Frozen,35.67380644
+StephsA,Mote,UM,59,Acer59,sample,,Acer,Frozen,1,,Patch Reef East of Elliot Key,25.73800087,-80.82800293,UM,2009,BISC-2009-SCI-0013,StephsA UM Mote Frozen,35.67762598
+StephsA,UM,UM,146,Acer146,sample,,Acer,Frozen,2,,Patch Reef East of Elliot Key,25.73800087,-80.82800293,UM,2009,BISC-2009-SCI-0013,StephsA UM UM Frozen,36.33103846
+SunnyIslesC,FWC,UM,19,Acer19,sample,,Acer,Frozen,1,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM FWC Frozen,35.67677452
+SunnyIslesC,CRF,UM,243,Acer243,sample,,Acer,Frozen,3,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM CRF Frozen,35.87542177
+SunnyIslesC,CRF,UM,528,Acer528,sample,,Acer,Fresh,4,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM CRF Fresh,35.87542177
+SunnyIslesC,Mote,UM,99,Acer99,sample,,Acer,Frozen,2,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM Mote Frozen,35.95234075
+SunnyIslesC,Mote,UM,581,Acer581,sample,,Acer,Fresh,4,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM Mote Fresh,35.95234075
+SunnyIslesC,NSU,UM,197,Acer197,sample,,Acer,Frozen,3,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM NSU Frozen,36.23211267
+SunnyIslesC,UM,UM,142,Acer142,sample,,Acer,Frozen,2,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM UM Frozen,36.50799007
+SunnyIslesC,UM,UM,357,Acer357,sample,,Acer,Fresh,4,,Sunny Isles,26.30400085,-81.16600037,UM,4/6/18,SAL-18-1723-SCRP,SunnyIslesC UM UM Fresh,36.50799007
+TDT1,FWC,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.56036203
+TDT1,CRF,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.82676755
+TDT1,NSU,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.9362215
+TDT1,UM,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.19470197
+TDT2,FWC,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.56036203
+TDT2,CRF,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.82676755
+TDT2,UM,FWC,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,36.19470197
+Thicket3,Mote,UM,590,Acer590,sample,,Acer,Fresh,4,TT,Patch Reef East of the southern end of Elliot Key,25.56200027,-81.66500092,UM,7/8/07,BISC-2009-SCI-0013,Thicket3 UM Mote Fresh,35.54583197
+Thicket3,Mote,UM,4,Acer4,sample,,Acer,Frozen,1,TT,Patch Reef East of the southern end of Elliot Key,25.56200027,-81.66500092,UM,7/8/07,BISC-2009-SCI-0013,Thicket3 UM Mote Frozen,35.54583197
+Thicket3,CRF,UM,414,Acer414,sample,,Acer,Fresh,4,TT,Patch Reef East of the southern end of Elliot Key,25.56200027,-81.66500092,UM,7/8/07,BISC-2009-SCI-0013,Thicket3 UM CRF Fresh,35.69522208
+Thicket3,CRF,UM,271,Acer271,sample,,Acer,Frozen,2,TT,Patch Reef East of the southern end of Elliot Key,25.56200027,-81.66500092,UM,7/8/07,BISC-2009-SCI-0013,Thicket3 UM CRF Frozen,35.69522208
+Thicket3,NSU,UM,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35.93917003
+Thicket3,UM,UM,158,Acer158,sample,,Acer,Frozen,2,TT,Patch Reef East of the southern end of Elliot Key,25.56200027,-81.66500092,UM,7/8/07,BISC-2009-SCI-0013,Thicket3 UM UM Frozen,36.08099795
+Thicket3,UM,UM,365,Acer365,sample,,Acer,Fresh,4,TT,Patch Reef East of the southern end of Elliot Key,25.56200027,-81.66500092,UM,7/8/07,BISC-2009-SCI-0013,Thicket3 UM UM Fresh,36.08099795
+YungsA,CRF,UM,232,Acer232R,sample,,Acer,Fresh,4,,Patch Reef just south of Fowey Rocks lighthouse,26.18083382,-80.89399719,UM,4/20/18,SAL-18-1723-SCRP,YungsA UM CRF Fresh,35.61052887
+YungsA,CRF,UM,255,Acer255,sample,,Acer,Frozen,3,,Patch Reef just south of Fowey Rocks lighthouse,26.18083382,-80.89399719,UM,4/20/18,SAL-18-1723-SCRP,YungsA UM CRF Frozen,35.61052887
+YungsA,UM,UM,355,Acer355,sample,,Acer,Fresh,4,,Patch Reef just south of Fowey Rocks lighthouse,26.18083382,-80.89399719,UM,4/20/18,SAL-18-1723-SCRP,YungsA UM UM Fresh,35.87526921
+YungsA,UM,UM,127,Acer127,sample,,Acer,Frozen,2,,Patch Reef just south of Fowey Rocks lighthouse,26.18083382,-80.89399719,UM,4/20/18,SAL-18-1723-SCRP,YungsA UM UM Frozen,35.87526921
+YungsA,Mote,UM,83,Acer83,sample,,Acer,Frozen,1,,Patch Reef just south of Fowey Rocks lighthouse,26.18083382,-80.89399719,UM,4/20/18,SAL-18-1723-SCRP,YungsA UM Mote Frozen,35.99798049
+YungsA,Mote,UM,569,Acer569,sample,,Acer,Fresh,4,,Patch Reef just south of Fowey Rocks lighthouse,26.18083382,-80.89399719,UM,4/20/18,SAL-18-1723-SCRP,YungsA UM Mote Fresh,35.99798049
